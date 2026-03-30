@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="VAS - Comunidad Dehoniana del Colegio ISC. Ver, Amar y Servir: un taller de formación espiritual y servicio inspirado en el carisma del Padre León Dehon.">
+    <meta name="keywords" content="comunidad dehoniana, colegio isc, vas, ver amar servir, padre dehon, taller dehoniano">
+    <meta name="author" content="Colegio ISC - Comunidad Dehoniana VAS">
+    <title>VAS | Ver, Amar y Servir - Comunidad Dehoniana Colegio ISC</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --dehon-gold: #C9A03D;
+            --dehon-gold-light: #E5C16A;
+            --dehon-gold-dark: #9B7E2E;
+            --dehon-maroon: #4A2512;
+            --dehon-maroon-light: #6B3E1A;
+            --dehon-cream: #FDF8F0;
+            --dehon-cream-dark: #F5EDE0;
+            --dehon-brown: #2C1810;
+            --dehon-red: #B86B3A;
+            --white: #FFFFFF;
+            --gray-600: #6C757D;
+            --gray-800: #343A40;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
+            --shadow-lg: 0 16px 40px rgba(0,0,0,0.12);
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--gray-800);
+            background-color: var(--dehon-cream);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, .serif {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Header */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(74, 37, 18, 0.96);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            transition: var(--transition);
+            border-bottom: 1px solid rgba(201, 160, 61, 0.3);
+        }
+
+        .header.scrolled {
+            background: var(--dehon-maroon);
+            box-shadow: var(--shadow-md);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            text-align: center;
+        }
+
+        .logo h1 {
+            font-size: 1.6rem;
+            color: var(--dehon-gold);
+            letter-spacing: 1px;
+        }
+
+        .logo p {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.7);
+            letter-spacing: 2px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--dehon-gold);
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link:hover {
+            color: var(--dehon-gold);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Símbolo Original VAS */
+        .vas-symbol {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto;
+        }
+
+        .symbol-ring {
+            position: absolute;
+            width: 130px;
+            height: 130px;
+            border: 3px solid var(--dehon-gold);
+            border-radius: 50%;
+            animation: pulseRing 2s ease-in-out infinite;
+        }
+
+        .symbol-inner {
+            position: relative;
+            width: 110px;
+            height: 110px;
+            background: linear-gradient(135deg, rgba(201,160,61,0.15), rgba(74,37,18,0.1));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(2px);
+        }
+
+        .symbol-eye {
+            position: absolute;
+            top: 25px;
+            font-size: 1.8rem;
+            color: var(--dehon-gold);
+            animation: gentleGlow 3s ease-in-out infinite;
+        }
+
+        .symbol-heart {
+            font-size: 2.5rem;
+            color: var(--dehon-red);
+            animation: heartbeat 1.5s ease-in-out infinite;
+            transform-origin: center;
+        }
+
+        .symbol-hands {
+            position: absolute;
+            bottom: 20px;
+            font-size: 1.8rem;
+            color: var(--dehon-maroon-light);
+            animation: gentleRise 2s ease-in-out infinite;
+        }
+
+        .symbol-letters {
+            position: absolute;
+            bottom: -30px;
+            display: flex;
+            gap: 0.8rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            font-size: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .symbol-letters span {
+            color: var(--dehon-gold);
+            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+        }
+
+        .symbol-letters span:nth-child(1) { animation: fadeLetter 1s ease-in-out infinite; animation-delay: 0s; }
+        .symbol-letters span:nth-child(2) { animation: fadeLetter 1s ease-in-out infinite; animation-delay: 0.3s; }
+        .symbol-letters span:nth-child(3) { animation: fadeLetter 1s ease-in-out infinite; animation-delay: 0.6s; }
+
+        @keyframes pulseRing {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.05); opacity: 1; }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        @keyframes gentleGlow {
+            0%, 100% { opacity: 0.7; transform: translateY(0); }
+            50% { opacity: 1; transform: translateY(-3px); }
+        }
+
+        @keyframes gentleRise {
+            0%, 100% { transform: translateY(0); opacity: 0.8; }
+            50% { transform: translateY(-5px); opacity: 1; }
+        }
+
+        @keyframes fadeLetter {
+            0%, 100% { opacity: 0.5; transform: translateY(0); }
+            50% { opacity: 1; transform: translateY(-3px); }
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(74, 37, 18, 0.88), rgba(44, 24, 16, 0.94)), url('https://images.unsplash.com/photo-1507699622108-4be3abd695ad?ixlib=rb-4.0.3');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            display: flex;
+            align-items: center;
+            position: relative;
+            margin-top: 0;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            color: var(--white);
+            padding: 8rem 2rem 4rem;
+        }
+
+        .hero-symbol {
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(201, 160, 61, 0.2);
+            backdrop-filter: blur(8px);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(201, 160, 61, 0.4);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 0.5rem;
+            line-height: 1.2;
+        }
+
+        .hero-meaning {
+            font-size: 1.8rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            color: var(--dehon-gold);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .hero-meaning span {
+            display: inline-block;
+            margin: 0 0.3rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .hero p {
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-schedule {
+            background: rgba(201, 160, 61, 0.15);
+            display: inline-block;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+            margin-top: 1rem;
+            border: 1px solid rgba(201, 160, 61, 0.4);
+        }
+
+        .hero-schedule i {
+            margin-right: 0.5rem;
+            color: var(--dehon-gold);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .btn-primary {
+            background: var(--dehon-gold);
+            color: var(--dehon-maroon);
+        }
+
+        .btn-primary:hover {
+            background: var(--dehon-gold-light);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--dehon-gold);
+            color: var(--dehon-gold);
+        }
+
+        .btn-outline:hover {
+            background: var(--dehon-gold);
+            color: var(--dehon-maroon);
+            transform: translateY(-3px);
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 750px;
+            margin: 0 auto 3rem;
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--dehon-gold);
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            color: var(--dehon-maroon);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--gray-600);
+        }
+
+        /* Significado VAS */
+        .meaning-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .meaning-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 24px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+            border-bottom: 3px solid transparent;
+        }
+
+        .meaning-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+            border-bottom-color: var(--dehon-gold);
+        }
+
+        .meaning-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(201, 160, 61, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .meaning-icon i {
+            font-size: 2.2rem;
+            color: var(--dehon-gold);
+        }
+
+        .meaning-card h3 {
+            font-size: 1.8rem;
+            color: var(--dehon-maroon);
+            margin-bottom: 0.5rem;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .meaning-card .meaning-word {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--dehon-gold);
+            margin-bottom: 1rem;
+        }
+
+        /* Horario Destacado */
+        .schedule-highlight {
+            background: linear-gradient(135deg, var(--dehon-maroon) 0%, var(--dehon-brown) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 3rem;
+            border-radius: 24px;
+            margin: 2rem 0;
+        }
+
+        .schedule-highlight h3 {
+            font-size: 2rem;
+            color: var(--dehon-gold);
+            margin-bottom: 1rem;
+        }
+
+        .schedule-time {
+            font-size: 2.5rem;
+            font-weight: 700;
+            font-family: 'Cormorant Garamond', serif;
+            margin: 1rem 0;
+        }
+
+        .schedule-day {
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+        }
+
+        /* Carisma Dehoniano */
+        .carisma-section {
+            background: var(--white);
+        }
+
+        .carisma-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .carisma-quote {
+            font-size: 1.8rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            color: var(--dehon-maroon);
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .carisma-quote::before {
+            content: '"';
+            font-size: 4rem;
+            position: absolute;
+            left: -0.5rem;
+            top: -1rem;
+            color: var(--dehon-gold);
+            opacity: 0.5;
+        }
+
+        /* Pilares */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .pillar-card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .pillar-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .pillar-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(201, 160, 61, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+        }
+
+        .pillar-icon i {
+            font-size: 2.2rem;
+            color: var(--dehon-gold);
+        }
+
+        .pillar-card h3 {
+            font-size: 1.4rem;
+            color: var(--dehon-maroon);
+            margin-bottom: 1rem;
+        }
+
+        /* Calendario */
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .calendar-item {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            transition: var(--transition);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .calendar-item:hover {
+            box-shadow: var(--shadow-md);
+            transform: translateX(5px);
+        }
+
+        .calendar-date {
+            text-align: center;
+            min-width: 70px;
+            background: var(--dehon-cream-dark);
+            padding: 0.5rem;
+            border-radius: 12px;
+        }
+
+        .calendar-date .day {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--dehon-gold);
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .calendar-date .month {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .calendar-info h4 {
+            color: var(--dehon-maroon);
+            margin-bottom: 0.25rem;
+        }
+
+        /* Galería */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 16px;
+            overflow: hidden;
+            cursor: pointer;
+            aspect-ratio: 1/1;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.08);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(74, 37, 18, 0.85);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dehon-brown);
+            color: var(--white);
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-col h4 {
+            color: var(--dehon-gold);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-col ul li a {
+            color: rgba(255,255,255,0.7);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--dehon-gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .vas-footer-symbol {
+            display: inline-flex;
+            gap: 1rem;
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            color: var(--dehon-gold);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.95);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .modal img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 12px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            color: var(--white);
+            font-size: 2rem;
+            cursor: pointer;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .meaning-grid,
+            .pillars-grid,
+            .carisma-grid,
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--dehon-maroon);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+                text-align: center;
+            }
+            .nav-menu.active {
+                display: flex;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .hero-meaning {
+                font-size: 1.4rem;
+            }
+            .meaning-grid,
+            .pillars-grid,
+            .carisma-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .schedule-time {
+                font-size: 1.8rem;
+            }
+            .container {
+                padding: 0 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header" id="header">
+        <div class="header-container">
+            <div class="logo">
+                <h1>Colegio <span style="color: var(--dehon-gold);">ISC</span></h1>
+                <p>Congregación de los Sacerdotes del Sagrado Corazón de Jesús</p>
+            </div>
+            <button class="mobile-menu-btn" id="mobileMenuBtn">
+                <i class="fas fa-bars"></i>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link">Inicio</a></li>
+                <li><a href="#significado" class="nav-link">Ver, Amar, Servir</a></li>
+                <li><a href="#carisma" class="nav-link">Carisma Dehoniano</a></li>
+                <li><a href="#taller" class="nav-link">Taller VAS</a></li>
+                <li><a href="#calendario" class="nav-link">Actividades</a></li>
+                <li><a href="#galeria" class="nav-link">Galería</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <div class="hero-symbol">
+                    <div class="vas-symbol">
+                        <div class="symbol-ring"></div>
+                        <div class="symbol-inner">
+                            <div class="symbol-eye"><i class="fas fa-eye"></i></div>
+                            <div class="symbol-heart"><i class="fas fa-heart"></i></div>
+                            <div class="symbol-hands"><i class="fas fa-hands-helping"></i></div>
+                        </div>
+                        <div class="symbol-letters">
+                            <span>V</span>
+                            <span>A</span>
+                            <span>S</span>
+                        </div>
+                    </div>
+                </div>
+                <span class="hero-badge">Comunidad Dehoniana</span>
+                <h1>VAS</h1>
+                <div class="hero-meaning">
+                    <span>Ver</span> <span>•</span> <span>Amar</span> <span>•</span> <span>Servir</span>
+                </div>
+                <div class="hero-subtitle">"Que todos sean uno" - Juan 17,21</div>
+                <p>Un taller de formación espiritual y servicio inspirado en el carisma del Padre León Dehon.</p>
+                <div class="hero-schedule">
+                    <i class="fas fa-calendar-alt"></i> Todos los lunes · 15:00 a 16:00 hrs
+                </div>
+                <div class="hero-buttons" style="margin-top: 2rem;">
+                    <a href="#significado" class="btn btn-primary">Descubre el significado <i class="fas fa-arrow-right"></i></a>
+                    <a href="#taller" class="btn btn-outline">Conoce el taller <i class="fas fa-users"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="significado" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Nuestro Lema</span>
+                    <h2 class="section-title">Ver, Amar y Servir</h2>
+                    <p class="section-subtitle">Tres palabras que resumen el camino de crecimiento espiritual y compromiso con los demás</p>
+                </div>
+                <div class="meaning-grid">
+                    <div class="meaning-card">
+                        <div class="meaning-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h3>Ver</h3>
+                        <div class="meaning-word">Contemplar con el corazón</div>
+                        <p>Aprender a mirar la realidad con los ojos de Cristo, descubrir las necesidades de los demás y reconocer la presencia de Dios en cada persona.</p>
+                    </div>
+                    <div class="meaning-card">
+                        <div class="meaning-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>Amar</h3>
+                        <div class="meaning-word">Amar como Jesús amó</div>
+                        <p>Vivir el amor reparador del Corazón de Cristo, entregándose sin medida y construyendo fraternidad desde el cariño sincero y desinteresado.</p>
+                    </div>
+                    <div class="meaning-card">
+                        <div class="meaning-icon">
+                            <i class="fas fa-hands-helping"></i>
+                        </div>
+                        <h3>Servir</h3>
+                        <div class="meaning-word">Servir con alegría</div>
+                        <p>Poner los dones al servicio de los más necesitados, siguiendo el ejemplo de Jesús que vino a servir y no a ser servido.</p>
+                    </div>
+                </div>
+
+                <div class="schedule-highlight">
+                    <i class="fas fa-clock" style="font-size: 2rem; color: var(--dehon-gold); margin-bottom: 1rem; display: inline-block;"></i>
+                    <h3>Encuentros VAS</h3>
+                    <div class="schedule-time">Lunes 15:00 - 16:00 hrs</div>
+                    <div class="schedule-day">Capilla del Colegio ISC</div>
+                    <p style="margin-top: 1rem; opacity: 0.9;">Todos los lunes nos reunimos para crecer juntos en la fe, compartir la vida y prepararnos para servir a los demás.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="carisma" class="section carisma-section">
+            <div class="container">
+                <div class="carisma-grid">
+                    <div class="carisma-content">
+                        <span class="section-tag">Nuestro Fundador</span>
+                        <h2 class="section-title">Padre León Dehon</h2>
+                        <div class="carisma-quote">
+                            Amar a Jesucristo y hacerlo amar, reparar el corazón de Cristo presente en los más necesitados.
+                        </div>
+                        <p style="margin-bottom: 1rem;">El Padre León Gustavo Dehon (1843-1925), fundador de los Sacerdotes del Sagrado Corazón de Jesús, nos dejó un legado de amor reparador, entrega a los pobres y pasión por la justicia social. Su espiritualidad se centra en el amor al Corazón de Cristo que se derrama en servicio a los demás.</p>
+                        <p>En el Colegio ISC, la comunidad dehoniana VAS mantiene vivo este carisma, formando jóvenes con corazón reparador, comprometidos con la transformación social desde el amor y la misericordia.</p>
+                    </div>
+                    <div class="carisma-image" style="border-radius: 24px; overflow: hidden; box-shadow: var(--shadow-lg);">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Leo_Dehon.jpg/800px-Leo_Dehon.jpg" alt="Padre León Dehon" style="width: 100%; height: auto; display: block;" onerror="this.src='https://via.placeholder.com/500x400/4A2512/B8860B?text=P.+León+Dehon'">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="taller" class="section" style="background: var(--dehon-cream-dark);">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Formación Dehoniana</span>
+                    <h2 class="section-title">Taller VAS</h2>
+                    <p class="section-subtitle">Un espacio de encuentro, crecimiento y servicio para los jóvenes del Colegio ISC</p>
+                </div>
+                <div class="pillars-grid">
+                    <div class="pillar-card">
+                        <div class="pillar-icon">
+                            <i class="fas fa-praying-hands"></i>
+                        </div>
+                        <h3>Encuentros Espirituales</h3>
+                        <p>Retiros, convivencias y momentos de oración profunda para alimentar la vida espiritual desde el carisma dehoniano.</p>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="pillar-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h3>Trabajo en Comunidad</h3>
+                        <p>Vivencia de la fraternidad dehoniana, compartiendo la vida, los desafíos y los sueños en un ambiente de confianza y acogida.</p>
+                    </div>
+                    <div class="pillar-card">
+                        <div class="pillar-icon">
+                            <i class="fas fa-seedling"></i>
+                        </div>
+                        <h3>Servicio Solidario</h3>
+                        <p>Proyectos de acción social que nos llevan a salir al encuentro de los más necesitados, siguiendo el ejemplo de Dehon.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="calendario" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Próximas Actividades</span>
+                    <h2 class="section-title">Calendario VAS</h2>
+                    <p class="section-subtitle">Encuentros y celebraciones de nuestra comunidad</p>
+                </div>
+                <div class="calendar-grid">
+                    <div class="calendar-item">
+                        <div class="calendar-date">
+                            <div class="day">07</div>
+                            <div class="month">Abril</div>
+                        </div>
+                        <div class="calendar-info">
+                            <h4>Inicio Taller VAS</h4>
+                            <p>Primer encuentro del año. Presentación y bienvenida a nuevos integrantes.</p>
+                        </div>
+                    </div>
+                    <div class="calendar-item">
+                        <div class="calendar-date">
+                            <div class="day">14</div>
+                            <div class="month">Abril</div>
+                        </div>
+                        <div class="calendar-info">
+                            <h4>Taller: Ver con el Corazón</h4>
+                            <p>Reflexión sobre el primer pilar: aprender a mirar la realidad como Jesús.</p>
+                        </div>
+                    </div>
+                    <div class="calendar-item">
+                        <div class="calendar-date">
+                            <div class="day">28</div>
+                            <div class="month">Abril</div>
+                        </div>
+                        <div class="calendar-info">
+                            <h4>Jornada Solidaria</h4>
+                            <p>Visita a hogar de ancianos y jornada de servicio comunitario.</p>
+                        </div>
+                    </div>
+                    <div class="calendar-item">
+                        <div class="calendar-date">
+                            <div class="day">12</div>
+                            <div class="month">Mayo</div>
+                        </div>
+                        <div class="calendar-info">
+                            <h4>Convivencia Fraterna</h4>
+                            <p>Encuentro de integración y celebración de la comunidad VAS.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="galeria" class="section" style="background: var(--dehon-cream-dark);">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Memoria Viva</span>
+                    <h2 class="section-title">Galería de Encuentros</h2>
+                    <p class="section-subtitle">Momentos que reflejan el espíritu de nuestra comunidad VAS</p>
+                </div>
+                <div class="gallery-grid">
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1507699622108-4be3abd695ad?ixlib=rb-4.0.3" alt="Encuentro de oración">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1446057032654-9d8885db76c6?ixlib=rb-4.0.3" alt="Retiro espiritual">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?ixlib=rb-4.0.3" alt="Jornada solidaria">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3" alt="Convivencia">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-search-plus"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4>VAS</h4>
+                    <p style="opacity: 0.7;">Ver, Amar y Servir</p>
+                    <div class="vas-footer-symbol">
+                        <i class="fas fa-eye"></i>
+                        <i class="fas fa-heart" style="color: var(--dehon-red);"></i>
+                        <i class="fas fa-hands-helping"></i>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Enlaces</h4>
+                    <ul>
+                        <li><a href="#significado">Ver, Amar, Servir</a></li>
+                        <li><a href="#carisma">Carisma Dehoniano</a></li>
+                        <li><a href="#taller">Taller VAS</a></li>
+                        <li><a href="#calendario">Calendario</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Horario</h4>
+                    <ul>
+                        <li><i class="fas fa-clock" style="margin-right: 0.5rem;"></i> Lunes 15:00 - 16:00 hrs</li>
+                        <li><i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i> Capilla del Colegio</li>
+                        <li><i class="fas fa-envelope" style="margin-right: 0.5rem;"></i> vas@colegioisc.cl</li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Comunidad Dehoniana</h4>
+                    <ul>
+                        <li>Congregación SCJ</li>
+                        <li>Padre León Dehon</li>
+                        <li>"Que todos sean uno"</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Colegio ISC - Comunidad Dehoniana VAS | Ver, Amar y Servir</p>
+                <p class="dehon-signature" style="margin-top: 0.5rem;">Todos los lunes · 15:00 a 16:00 hrs · Te esperamos</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="modal" class="modal">
+        <span class="modal-close">&times;</span>
+        <img id="modal-img" src="" alt="Imagen ampliada">
+    </div>
+
+    <script>
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 100);
+        });
+
+        const mobileBtn = document.getElementById('mobileMenuBtn');
+        const navMenu = document.getElementById('navMenu');
+        mobileBtn.addEventListener('click', () => navMenu.classList.toggle('active'));
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    navMenu.classList.remove('active');
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        const modal = document.getElementById('modal');
+        const modalImg = document.getElementById('modal-img');
+        const closeModal = document.querySelector('.modal-close');
+        
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const img = item.querySelector('img');
+                modal.style.display = 'flex';
+                modalImg.src = img.src;
+                document.body.style.overflow = 'hidden';
+            });
+        });
+        
+        closeModal.addEventListener('click', () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+</html>
