@@ -3,58 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="VAS - Comunidad Dehoniana del Colegio ISC. Ver, Amar y Servir: un taller de formación espiritual y servicio inspirado en el carisma del Padre León Dehon.">
-    <meta name="keywords" content="comunidad dehoniana, colegio isc, vas, ver amar servir, padre dehon, taller dehoniano">
-    <meta name="author" content="Colegio ISC - Comunidad Dehoniana VAS">
-    <title>VAS | Ver, Amar y Servir - Comunidad Dehoniana Colegio ISC</title>
+    <meta name="description" content="Comunidad VAS - Instituto Sagrado Corazón Dehonianos. Ver, Amar y Servir. Jóvenes de enseñanza media compartiendo la fe y el servicio.">
+    <meta name="keywords" content="VAS, Instituto Sagrado Corazón, Dehonianos, Ver Amar Servir, comunidad dehoniana, pastoral juvenil">
+    <meta name="author" content="Instituto Sagrado Corazón - Dehonianos">
+    <meta property="og:title" content="VAS | Ver, Amar y Servir - Instituto Sagrado Corazón">
+    <meta property="og:description" content="Comunidad de jóvenes de enseñanza media que comparten la vida y la fe.">
+    <meta property="og:type" content="website">
+    <title>VAS | Ver, Amar y Servir - Instituto Sagrado Corazón Dehonianos</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <style>
         :root {
             --dehon-gold: #C9A03D;
-            --dehon-gold-light: #E5C16A;
             --dehon-gold-dark: #9B7E2E;
-            --dehon-maroon: #4A2512;
-            --dehon-maroon-light: #6B3E1A;
-            --dehon-cream: #FDF8F0;
-            --dehon-cream-dark: #F5EDE0;
-            --dehon-brown: #2C1810;
-            --dehon-red: #B86B3A;
-            --white: #FFFFFF;
+            --dehon-maroon: #8B1A1A;
+            --dehon-maroon-light: #A52A2A;
+            --mary-blue: #1E3A5F;
+            --mary-blue-light: #2C5282;
+            --papal-white: #FFFFFF;
+            --papal-offwhite: #FDFBF7;
+            --spirit-red: #C0392B;
+            --hope-green: #27AE60;
+            --gray-100: #F8F9FA;
+            --gray-200: #E9ECEF;
             --gray-600: #6C757D;
             --gray-800: #343A40;
             --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
             --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
             --shadow-lg: 0 16px 40px rgba(0,0,0,0.12);
-            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --transition: all 0.3s ease;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: 'Inter', sans-serif;
             color: var(--gray-800);
-            background-color: var(--dehon-cream);
+            background-color: var(--papal-offwhite);
             line-height: 1.6;
             overflow-x: hidden;
         }
 
         h1, h2, h3, h4, .serif {
             font-family: 'Cormorant Garamond', serif;
-            font-weight: 600;
+            font-weight: 700;
         }
 
-        .container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
 
         /* Header */
         .header {
@@ -62,729 +60,190 @@
             top: 0;
             left: 0;
             right: 0;
-            background: rgba(74, 37, 18, 0.96);
+            background: rgba(30, 58, 95, 0.96);
             backdrop-filter: blur(12px);
             z-index: 1000;
             transition: var(--transition);
             border-bottom: 1px solid rgba(201, 160, 61, 0.3);
         }
+        .header.scrolled { background: var(--mary-blue); box-shadow: var(--shadow-md); }
+        .header-container { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 2rem; max-width: 1400px; margin: 0 auto; }
+        .logo h1 { font-size: 1.4rem; color: var(--dehon-gold); }
+        .logo p { font-size: 0.65rem; color: rgba(255,255,255,0.8); letter-spacing: 1px; }
+        .nav-menu { display: flex; gap: 2rem; list-style: none; }
+        .nav-link { color: white; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: var(--transition); position: relative; }
+        .nav-link::after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0; height: 2px; background: var(--dehon-gold); transition: var(--transition); }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+        .nav-link:hover { color: var(--dehon-gold); }
+        .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
 
-        .header.scrolled {
-            background: var(--dehon-maroon);
-            box-shadow: var(--shadow-md);
+        /* Botón flotante donación */
+        .floating-donate {
+            position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
+            background: var(--spirit-red); color: white; width: 60px; height: 60px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            box-shadow: var(--shadow-lg); cursor: pointer; transition: var(--transition);
+            animation: pulse 2s infinite;
         }
+        .floating-donate:hover { transform: scale(1.1); background: var(--dehon-maroon); }
+        @keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(192,57,43,0.4); } 50% { box-shadow: 0 0 0 15px rgba(192,57,43,0); } }
 
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0.8rem 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
+        /* WhatsApp flotante */
+        .floating-wa {
+            position: fixed; bottom: 2rem; left: 2rem; z-index: 999;
+            background: #25D366; color: white; width: 60px; height: 60px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            box-shadow: var(--shadow-lg); cursor: pointer; transition: var(--transition);
         }
+        .floating-wa:hover { transform: scale(1.1); }
 
-        .logo {
-            text-align: center;
-        }
-
-        .logo h1 {
-            font-size: 1.6rem;
-            color: var(--dehon-gold);
-            letter-spacing: 1px;
-        }
-
-        .logo p {
-            font-size: 0.7rem;
-            color: rgba(255,255,255,0.7);
-            letter-spacing: 2px;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
-        .nav-link {
-            color: var(--white);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            bottom: -6px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--dehon-gold);
-            transition: var(--transition);
-        }
-
-        .nav-link:hover::after,
-        .nav-link.active::after {
-            width: 100%;
-        }
-
-        .nav-link:hover {
-            color: var(--dehon-gold);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--white);
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* Símbolo Original VAS */
-        .vas-symbol {
-            display: inline-flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            width: 140px;
-            height: 140px;
-            margin: 0 auto;
-        }
-
-        .symbol-ring {
-            position: absolute;
-            width: 130px;
-            height: 130px;
-            border: 3px solid var(--dehon-gold);
-            border-radius: 50%;
-            animation: pulseRing 2s ease-in-out infinite;
-        }
-
-        .symbol-inner {
-            position: relative;
-            width: 110px;
-            height: 110px;
-            background: linear-gradient(135deg, rgba(201,160,61,0.15), rgba(74,37,18,0.1));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(2px);
-        }
-
-        .symbol-eye {
-            position: absolute;
-            top: 25px;
-            font-size: 1.8rem;
-            color: var(--dehon-gold);
-            animation: gentleGlow 3s ease-in-out infinite;
-        }
-
-        .symbol-heart {
-            font-size: 2.5rem;
-            color: var(--dehon-red);
-            animation: heartbeat 1.5s ease-in-out infinite;
-            transform-origin: center;
-        }
-
-        .symbol-hands {
-            position: absolute;
-            bottom: 20px;
-            font-size: 1.8rem;
-            color: var(--dehon-maroon-light);
-            animation: gentleRise 2s ease-in-out infinite;
-        }
-
-        .symbol-letters {
-            position: absolute;
-            bottom: -30px;
-            display: flex;
-            gap: 0.8rem;
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 700;
-            font-size: 1rem;
-            letter-spacing: 2px;
-        }
-
-        .symbol-letters span {
-            color: var(--dehon-gold);
-            text-shadow: 0 1px 2px rgba(0,0,0,0.1);
-        }
-
-        .symbol-letters span:nth-child(1) { animation: fadeLetter 1s ease-in-out infinite; animation-delay: 0s; }
-        .symbol-letters span:nth-child(2) { animation: fadeLetter 1s ease-in-out infinite; animation-delay: 0.3s; }
-        .symbol-letters span:nth-child(3) { animation: fadeLetter 1s ease-in-out infinite; animation-delay: 0.6s; }
-
-        @keyframes pulseRing {
-            0%, 100% { transform: scale(1); opacity: 0.6; }
-            50% { transform: scale(1.05); opacity: 1; }
-        }
-
-        @keyframes heartbeat {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.15); }
-        }
-
-        @keyframes gentleGlow {
-            0%, 100% { opacity: 0.7; transform: translateY(0); }
-            50% { opacity: 1; transform: translateY(-3px); }
-        }
-
-        @keyframes gentleRise {
-            0%, 100% { transform: translateY(0); opacity: 0.8; }
-            50% { transform: translateY(-5px); opacity: 1; }
-        }
-
-        @keyframes fadeLetter {
-            0%, 100% { opacity: 0.5; transform: translateY(0); }
-            50% { opacity: 1; transform: translateY(-3px); }
-        }
-
-        /* Hero Section */
+        /* Hero */
         .hero {
             min-height: 100vh;
-            background: linear-gradient(135deg, rgba(74, 37, 18, 0.88), rgba(44, 24, 16, 0.94)), url('https://images.unsplash.com/photo-1507699622108-4be3abd695ad?ixlib=rb-4.0.3');
-            background-size: cover;
+            background: linear-gradient(135deg, rgba(30, 58, 95, 0.85), rgba(139, 26, 26, 0.75)), url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDQwIDQwIj48cGF0aCBmaWxsPSIjQzlBMDNEIiBmaWxsLW9wYWNpdHk9IjAuMDYiIGQ9Ik0wIDBoNDB2NDBIMHoiLz48cGF0aCBmaWxsPSIjQzlBMDNEIiBmaWxsLW9wYWNpdHk9IjAuMDYiIGQ9Ik0wIDBoMjB2MjBIMHoiLz48L3N2Zz4=');
+            background-size: cover, 30px;
             background-position: center;
             background-attachment: fixed;
             display: flex;
             align-items: center;
-            position: relative;
             margin-top: 0;
         }
+        .hero-content { max-width: 900px; margin: 0 auto; text-align: center; color: white; padding: 8rem 2rem 4rem; }
+        .hero-logo { font-size: 1rem; letter-spacing: 3px; margin-bottom: 1rem; opacity: 0.9; }
+        .hero h1 { font-size: 4rem; margin-bottom: 0.5rem; }
+        .hero-meaning { font-size: 2rem; font-family: 'Cormorant Garamond', serif; color: var(--dehon-gold); margin-bottom: 1rem; }
+        .hero-description { max-width: 700px; margin: 1rem auto; font-size: 1rem; opacity: 0.95; }
+        .hero-schedule { background: rgba(201, 160, 61, 0.2); display: inline-block; padding: 0.8rem 1.5rem; border-radius: 50px; margin: 1rem 0; border: 1px solid rgba(201, 160, 61, 0.5); }
+        .hero-contact { margin-top: 1rem; font-size: 0.9rem; }
+        .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.9rem 2rem; border-radius: 50px; font-weight: 600; text-decoration: none; transition: var(--transition); }
+        .btn-primary { background: var(--dehon-gold); color: var(--mary-blue); }
+        .btn-primary:hover { background: var(--dehon-gold-dark); transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+        .btn-outline { background: transparent; border: 2px solid var(--dehon-gold); color: var(--dehon-gold); }
+        .btn-outline:hover { background: var(--dehon-gold); color: var(--mary-blue); transform: translateY(-3px); }
 
-        .hero-content {
-            max-width: 900px;
-            margin: 0 auto;
-            text-align: center;
-            color: var(--white);
-            padding: 8rem 2rem 4rem;
-        }
+        /* Secciones */
+        .section { padding: 5rem 0; }
+        .section-light { background: var(--papal-offwhite); }
+        .section-dark { background: var(--mary-blue); color: white; }
+        .section-maroon { background: var(--dehon-maroon); color: white; }
+        .section-header { text-align: center; max-width: 750px; margin: 0 auto 3rem; }
+        .section-tag { display: inline-block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; color: var(--dehon-gold); margin-bottom: 1rem; }
+        .section-title { font-size: 2.8rem; margin-bottom: 1rem; }
+        .section-dark .section-title, .section-maroon .section-title { color: var(--dehon-gold); }
 
-        .hero-symbol {
-            margin-bottom: 2rem;
-            display: flex;
-            justify-content: center;
-        }
+        /* Tarjetas equipo */
+        .team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; max-width: 800px; margin: 0 auto; }
+        .team-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-md); transition: var(--transition); text-align: center; }
+        .team-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+        .team-card img { width: 100%; height: 280px; object-fit: cover; background: var(--gray-200); }
+        .team-info { padding: 1.5rem; }
+        .team-info h3 { color: var(--mary-blue); font-size: 1.3rem; }
+        .team-info .role { color: var(--dehon-gold); font-weight: 600; margin: 0.25rem 0; }
 
-        .hero-badge {
-            display: inline-block;
-            background: rgba(201, 160, 61, 0.2);
-            backdrop-filter: blur(8px);
-            padding: 0.5rem 1.2rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            font-weight: 500;
-            letter-spacing: 2px;
-            margin-bottom: 1.5rem;
-            border: 1px solid rgba(201, 160, 61, 0.4);
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 0.5rem;
-            line-height: 1.2;
-        }
-
-        .hero-meaning {
-            font-size: 1.8rem;
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 600;
-            color: var(--dehon-gold);
-            margin-bottom: 1rem;
-            letter-spacing: 2px;
-        }
-
-        .hero-meaning span {
-            display: inline-block;
-            margin: 0 0.3rem;
-        }
-
-        .hero-subtitle {
-            font-size: 1.2rem;
-            margin-bottom: 1.5rem;
-            font-style: italic;
-        }
-
-        .hero p {
-            font-size: 1rem;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        .hero-schedule {
-            background: rgba(201, 160, 61, 0.15);
-            display: inline-block;
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 500;
-            margin-top: 1rem;
-            border: 1px solid rgba(201, 160, 61, 0.4);
-        }
-
-        .hero-schedule i {
-            margin-right: 0.5rem;
-            color: var(--dehon-gold);
-        }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            padding: 0.9rem 2.2rem;
-            border-radius: 50px;
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition);
-            font-size: 0.95rem;
-        }
-
-        .btn-primary {
-            background: var(--dehon-gold);
-            color: var(--dehon-maroon);
-        }
-
-        .btn-primary:hover {
-            background: var(--dehon-gold-light);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--dehon-gold);
-            color: var(--dehon-gold);
-        }
-
-        .btn-outline:hover {
-            background: var(--dehon-gold);
-            color: var(--dehon-maroon);
-            transform: translateY(-3px);
-        }
-
-        /* Section Styles */
-        .section {
-            padding: 5rem 0;
-        }
-
-        .section-header {
-            text-align: center;
-            max-width: 750px;
-            margin: 0 auto 3rem;
-        }
-
-        .section-tag {
-            display: inline-block;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            color: var(--dehon-gold);
-            margin-bottom: 1rem;
-        }
-
-        .section-title {
-            font-size: 2.8rem;
-            color: var(--dehon-maroon);
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-
-        .section-subtitle {
-            font-size: 1.1rem;
-            color: var(--gray-600);
-        }
-
-        /* Significado VAS */
-        .meaning-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .meaning-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 24px;
-            text-align: center;
-            transition: var(--transition);
-            box-shadow: var(--shadow-sm);
-            border-bottom: 3px solid transparent;
-        }
-
-        .meaning-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-            border-bottom-color: var(--dehon-gold);
-        }
-
-        .meaning-icon {
-            width: 80px;
-            height: 80px;
-            background: rgba(201, 160, 61, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-        }
-
-        .meaning-icon i {
-            font-size: 2.2rem;
-            color: var(--dehon-gold);
-        }
-
-        .meaning-card h3 {
-            font-size: 1.8rem;
-            color: var(--dehon-maroon);
-            margin-bottom: 0.5rem;
-            font-family: 'Cormorant Garamond', serif;
-        }
-
-        .meaning-card .meaning-word {
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            color: var(--dehon-gold);
-            margin-bottom: 1rem;
-        }
-
-        /* Horario Destacado */
-        .schedule-highlight {
-            background: linear-gradient(135deg, var(--dehon-maroon) 0%, var(--dehon-brown) 100%);
-            color: var(--white);
-            text-align: center;
-            padding: 3rem;
-            border-radius: 24px;
-            margin: 2rem 0;
-        }
-
-        .schedule-highlight h3 {
-            font-size: 2rem;
-            color: var(--dehon-gold);
-            margin-bottom: 1rem;
-        }
-
-        .schedule-time {
-            font-size: 2.5rem;
-            font-weight: 700;
-            font-family: 'Cormorant Garamond', serif;
-            margin: 1rem 0;
-        }
-
-        .schedule-day {
-            font-size: 1.2rem;
-            letter-spacing: 2px;
-        }
-
-        /* Carisma Dehoniano */
-        .carisma-section {
-            background: var(--white);
-        }
-
-        .carisma-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 3rem;
-            align-items: center;
-        }
-
-        .carisma-quote {
-            font-size: 1.8rem;
-            font-family: 'Cormorant Garamond', serif;
-            font-style: italic;
-            color: var(--dehon-maroon);
-            margin-bottom: 1.5rem;
-            line-height: 1.3;
-            position: relative;
-            padding-left: 2rem;
-        }
-
-        .carisma-quote::before {
-            content: '"';
-            font-size: 4rem;
-            position: absolute;
-            left: -0.5rem;
-            top: -1rem;
-            color: var(--dehon-gold);
-            opacity: 0.5;
-        }
-
-        /* Pilares */
-        .pillars-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .pillar-card {
-            background: var(--white);
-            padding: 2rem;
-            border-radius: 20px;
-            text-align: center;
-            transition: var(--transition);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .pillar-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .pillar-icon {
-            width: 80px;
-            height: 80px;
-            background: rgba(201, 160, 61, 0.1);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 1.5rem;
-        }
-
-        .pillar-icon i {
-            font-size: 2.2rem;
-            color: var(--dehon-gold);
-        }
-
-        .pillar-card h3 {
-            font-size: 1.4rem;
-            color: var(--dehon-maroon);
-            margin-bottom: 1rem;
-        }
+        /* Donaciones */
+        .donations-section { background: linear-gradient(135deg, #1a472a, #2d6a4f); color: white; }
+        .donations-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .donation-card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 24px; padding: 2rem; border: 1px solid rgba(255,255,255,0.2); }
+        .donation-amounts { display: flex; flex-wrap: wrap; gap: 0.8rem; margin: 1.5rem 0; justify-content: center; }
+        .amount-btn { background: rgba(255,255,255,0.15); border: none; padding: 0.7rem 1.3rem; border-radius: 50px; color: white; font-weight: 600; cursor: pointer; transition: var(--transition); }
+        .amount-btn:hover, .amount-btn.active { background: var(--dehon-gold); color: var(--mary-blue); }
+        .bank-info { background: white; color: var(--gray-800); border-radius: 20px; padding: 1.5rem; margin-top: 1.5rem; }
+        .bank-detail { display: flex; justify-content: space-between; padding: 0.7rem 0; border-bottom: 1px solid var(--gray-200); font-family: monospace; font-size: 0.85rem; }
+        .copy-btn { background: none; border: none; color: var(--mary-blue); cursor: pointer; margin-left: 0.5rem; }
+        .goal-progress { background: rgba(255,255,255,0.15); border-radius: 30px; padding: 1rem; margin: 1rem 0; text-align: center; }
+        .progress-bar { background: rgba(255,255,255,0.3); border-radius: 30px; height: 10px; margin-top: 0.5rem; overflow: hidden; }
+        .progress-fill { background: var(--dehon-gold); width: 48%; height: 100%; border-radius: 30px; }
 
         /* Calendario */
-        .calendar-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
+        .calendar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+        .calendar-item { background: white; border-radius: 16px; padding: 1.5rem; display: flex; gap: 1rem; box-shadow: var(--shadow-sm); transition: var(--transition); }
+        .calendar-item:hover { box-shadow: var(--shadow-md); transform: translateX(5px); }
+        .calendar-date { text-align: center; min-width: 70px; background: var(--gray-100); padding: 0.5rem; border-radius: 12px; }
+        .calendar-date .day { font-size: 1.8rem; font-weight: 700; color: var(--dehon-gold); font-family: 'Cormorant Garamond', serif; }
+        .countdown { text-align: center; background: var(--dehon-maroon); color: white; padding: 2rem; border-radius: 20px; margin-top: 2rem; }
+        .countdown-timer { display: flex; justify-content: center; gap: 2rem; margin-top: 1rem; }
+        .countdown-timer div { text-align: center; }
+        .countdown-timer span { font-size: 2rem; font-weight: 700; display: block; }
 
-        .calendar-item {
-            background: var(--white);
-            border-radius: 16px;
-            padding: 1.5rem;
-            display: flex;
-            gap: 1rem;
-            transition: var(--transition);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .calendar-item:hover {
-            box-shadow: var(--shadow-md);
-            transform: translateX(5px);
-        }
-
-        .calendar-date {
-            text-align: center;
-            min-width: 70px;
-            background: var(--dehon-cream-dark);
-            padding: 0.5rem;
-            border-radius: 12px;
-        }
-
-        .calendar-date .day {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: var(--dehon-gold);
-            font-family: 'Cormorant Garamond', serif;
-        }
-
-        .calendar-date .month {
-            font-size: 0.8rem;
-            text-transform: uppercase;
-        }
-
-        .calendar-info h4 {
-            color: var(--dehon-maroon);
-            margin-bottom: 0.25rem;
-        }
+        /* Blog */
+        .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .blog-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-sm); transition: var(--transition); }
+        .blog-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
+        .blog-card img { width: 100%; height: 200px; object-fit: cover; }
+        .blog-content { padding: 1.5rem; }
+        .blog-category { display: inline-block; background: var(--dehon-gold); color: white; font-size: 0.7rem; padding: 0.2rem 0.8rem; border-radius: 20px; margin-bottom: 0.5rem; }
+        .blog-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--mary-blue); }
+        .blog-date { font-size: 0.8rem; color: var(--gray-600); margin: 0.5rem 0; }
 
         /* Galería */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 1rem;
-        }
+        .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+        .gallery-item { position: relative; border-radius: 16px; overflow: hidden; cursor: pointer; aspect-ratio: 1/1; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
+        .gallery-item:hover img { transform: scale(1.08); }
+        .gallery-overlay { position: absolute; inset: 0; background: rgba(30, 58, 95, 0.85); display: flex; align-items: center; justify-content: center; opacity: 0; transition: var(--transition); }
+        .gallery-item:hover .gallery-overlay { opacity: 1; }
+        .gallery-overlay i { font-size: 2rem; color: var(--dehon-gold); }
 
-        .gallery-item {
-            position: relative;
-            border-radius: 16px;
-            overflow: hidden;
-            cursor: pointer;
-            aspect-ratio: 1/1;
-        }
+        /* Testimonios Swiper */
+        .testimonials-slider { overflow: hidden; padding: 1rem 0; }
+        .testimonial-card { background: white; padding: 2rem; border-radius: 24px; margin: 0 1rem; text-align: center; box-shadow: var(--shadow-md); }
+        .testimonial-card i { font-size: 2rem; color: var(--dehon-gold); margin-bottom: 1rem; }
+        .testimonial-form { margin-top: 2rem; background: var(--gray-100); padding: 2rem; border-radius: 20px; }
 
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
+        /* FAQ */
+        .faq-grid { max-width: 800px; margin: 0 auto; }
+        .faq-item { background: white; border-radius: 12px; margin-bottom: 1rem; overflow: hidden; }
+        .faq-question { padding: 1.2rem; background: white; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; }
+        .faq-question i { transition: var(--transition); }
+        .faq-answer { padding: 0 1.2rem; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+        .faq-item.active .faq-answer { padding: 0 1.2rem 1.2rem; max-height: 200px; }
+        .faq-item.active .faq-question i { transform: rotate(180deg); }
 
-        .gallery-item:hover img {
-            transform: scale(1.08);
-        }
+        /* Contacto */
+        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+        .contact-info { background: var(--mary-blue); padding: 2rem; border-radius: 24px; color: white; }
+        .contact-detail { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+        .contact-detail i { width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+        .contact-form { background: white; padding: 2rem; border-radius: 24px; box-shadow: var(--shadow-md); }
+        .form-group { margin-bottom: 1rem; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.8rem; border: 1px solid var(--gray-200); border-radius: 12px; font-family: inherit; }
+        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--dehon-gold); }
+        .map-container { margin-top: 2rem; border-radius: 20px; overflow: hidden; }
 
-        .gallery-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(74, 37, 18, 0.85);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: var(--transition);
-        }
-
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
-        }
+        /* Newsletter */
+        .newsletter { background: var(--dehon-maroon); text-align: center; padding: 3rem; border-radius: 24px; }
+        .newsletter-form { display: flex; gap: 1rem; max-width: 500px; margin: 1.5rem auto 0; }
+        .newsletter-form input { flex: 1; padding: 0.8rem; border: none; border-radius: 50px; }
+        .newsletter-form button { background: var(--dehon-gold); border: none; padding: 0.8rem 1.5rem; border-radius: 50px; cursor: pointer; font-weight: 600; }
 
         /* Footer */
-        .footer {
-            background: var(--dehon-brown);
-            color: var(--white);
-            padding: 4rem 0 2rem;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .footer-col h4 {
-            color: var(--dehon-gold);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .footer-col ul {
-            list-style: none;
-        }
-
-        .footer-col ul li {
-            margin-bottom: 0.75rem;
-        }
-
-        .footer-col ul li a {
-            color: rgba(255,255,255,0.7);
-            text-decoration: none;
-            transition: var(--transition);
-        }
-
-        .footer-col ul li a:hover {
-            color: var(--dehon-gold);
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 2rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .vas-footer-symbol {
-            display: inline-flex;
-            gap: 1rem;
-            margin-top: 1rem;
-            font-size: 1.2rem;
-            color: var(--dehon-gold);
-        }
+        .footer { background: var(--mary-blue); color: white; padding: 4rem 0 2rem; }
+        .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-bottom: 3rem; }
+        .footer-col h4 { color: var(--dehon-gold); margin-bottom: 1rem; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 0.75rem; }
+        .footer-col ul li a { color: rgba(255,255,255,0.7); text-decoration: none; transition: var(--transition); }
+        .footer-col ul li a:hover { color: var(--dehon-gold); }
+        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); }
 
         /* Modal */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.95);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-        }
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center; }
+        .modal img { max-width: 90%; max-height: 90%; border-radius: 12px; }
+        .modal-close { position: absolute; top: 2rem; right: 2rem; color: white; font-size: 2rem; cursor: pointer; }
 
-        .modal img {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 12px;
-        }
-
-        .modal-close {
-            position: absolute;
-            top: 2rem;
-            right: 2rem;
-            color: var(--white);
-            font-size: 2rem;
-            cursor: pointer;
-        }
-
-        /* Responsive */
         @media (max-width: 992px) {
-            .meaning-grid,
-            .pillars-grid,
-            .carisma-grid,
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
+            .donations-grid, .blog-grid, .gallery-grid, .footer-grid, .contact-grid { grid-template-columns: repeat(2, 1fr); }
+            .team-grid { grid-template-columns: 1fr; }
         }
-
         @media (max-width: 768px) {
-            .mobile-menu-btn {
-                display: block;
-            }
-            .nav-menu {
-                display: none;
-                position: absolute;
-                top: 100%;
-                left: 0;
-                right: 0;
-                background: var(--dehon-maroon);
-                flex-direction: column;
-                padding: 2rem;
-                gap: 1rem;
-                text-align: center;
-            }
-            .nav-menu.active {
-                display: flex;
-            }
-            .hero h1 {
-                font-size: 2.2rem;
-            }
-            .hero-meaning {
-                font-size: 1.4rem;
-            }
-            .meaning-grid,
-            .pillars-grid,
-            .carisma-grid,
-            .gallery-grid {
-                grid-template-columns: 1fr;
-            }
-            .section-title {
-                font-size: 2rem;
-            }
-            .schedule-time {
-                font-size: 1.8rem;
-            }
-            .container {
-                padding: 0 1.5rem;
-            }
+            .mobile-menu-btn { display: block; }
+            .nav-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--mary-blue); flex-direction: column; padding: 2rem; gap: 1rem; text-align: center; }
+            .nav-menu.active { display: flex; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero-meaning { font-size: 1.4rem; }
+            .donations-grid, .blog-grid, .gallery-grid, .footer-grid, .contact-grid { grid-template-columns: 1fr; }
+            .section-title { font-size: 2rem; }
+            .countdown-timer { flex-wrap: wrap; gap: 1rem; }
         }
     </style>
 </head>
@@ -792,237 +251,282 @@
     <header class="header" id="header">
         <div class="header-container">
             <div class="logo">
-                <h1>Colegio <span style="color: var(--dehon-gold);">ISC</span></h1>
-                <p>Congregación de los Sacerdotes del Sagrado Corazón de Jesús</p>
+                <h1>Instituto Sagrado Corazón</h1>
+                <p>Dehonianos · Comunidad VAS</p>
             </div>
-            <button class="mobile-menu-btn" id="mobileMenuBtn">
-                <i class="fas fa-bars"></i>
-            </button>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#home" class="nav-link">Inicio</a></li>
-                <li><a href="#significado" class="nav-link">Ver, Amar, Servir</a></li>
-                <li><a href="#carisma" class="nav-link">Carisma Dehoniano</a></li>
-                <li><a href="#taller" class="nav-link">Taller VAS</a></li>
-                <li><a href="#calendario" class="nav-link">Actividades</a></li>
+                <li><a href="#comunidad" class="nav-link">Comunidad</a></li>
+                <li><a href="#donaciones" class="nav-link">Donaciones</a></li>
+                <li><a href="#eventos" class="nav-link">Eventos</a></li>
+                <li><a href="#blog" class="nav-link">Noticias</a></li>
                 <li><a href="#galeria" class="nav-link">Galería</a></li>
+                <li><a href="#contacto" class="nav-link">Contacto</a></li>
             </ul>
         </div>
     </header>
 
+    <div class="floating-donate" onclick="document.getElementById('donaciones').scrollIntoView({behavior: 'smooth'})">
+        <i class="fas fa-hand-holding-heart"></i>
+    </div>
+    <div class="floating-wa" onclick="window.open('https://wa.me/56912345678?text=Hola%2C%20quiero%20más%20información%20sobre%20la%20comunidad%20VAS','_blank')">
+        <i class="fab fa-whatsapp"></i>
+    </div>
+
     <main>
         <section id="home" class="hero">
             <div class="hero-content">
-                <div class="hero-symbol">
-                    <div class="vas-symbol">
-                        <div class="symbol-ring"></div>
-                        <div class="symbol-inner">
-                            <div class="symbol-eye"><i class="fas fa-eye"></i></div>
-                            <div class="symbol-heart"><i class="fas fa-heart"></i></div>
-                            <div class="symbol-hands"><i class="fas fa-hands-helping"></i></div>
-                        </div>
-                        <div class="symbol-letters">
-                            <span>V</span>
-                            <span>A</span>
-                            <span>S</span>
-                        </div>
-                    </div>
-                </div>
-                <span class="hero-badge">Comunidad Dehoniana</span>
-                <h1>VAS</h1>
-                <div class="hero-meaning">
-                    <span>Ver</span> <span>•</span> <span>Amar</span> <span>•</span> <span>Servir</span>
-                </div>
-                <div class="hero-subtitle">"Que todos sean uno" - Juan 17,21</div>
-                <p>Un taller de formación espiritual y servicio inspirado en el carisma del Padre León Dehon.</p>
-                <div class="hero-schedule">
-                    <i class="fas fa-calendar-alt"></i> Todos los lunes · 15:00 a 16:00 hrs
-                </div>
+                <div class="hero-logo">INSTITUTO SAGRADO CORAZÓN · DEHONIANOS</div>
+                <h1>COMUNIDAD <span style="color: var(--dehon-gold);">VAS</span></h1>
+                <div class="hero-meaning">Ver · Amar · Servir</div>
+                <p class="hero-description">Jóvenes de enseñanza media (1° a IV° medio) que quieran compartir la vida y la fe con sus pares y con quienes más lo necesitan, por medio de la oración, la música, la formación, el compartir fraterno, obras sociales, la entretención, dinámicas y mucho más.</p>
+                <div class="hero-schedule"><i class="fas fa-calendar-alt"></i> Todos los lunes de 15:00 a 16:30 hrs</div>
+                <div class="hero-contact"><i class="fas fa-map-marker-alt"></i> Sala Pastoral · Profesora Constanza Espinoza</div>
                 <div class="hero-buttons" style="margin-top: 2rem;">
-                    <a href="#significado" class="btn btn-primary">Descubre el significado <i class="fas fa-arrow-right"></i></a>
-                    <a href="#taller" class="btn btn-outline">Conoce el taller <i class="fas fa-users"></i></a>
+                    <a href="#comunidad" class="btn btn-primary">Conoce más <i class="fas fa-arrow-right"></i></a>
+                    <a href="#donaciones" class="btn btn-outline">Apóyanos <i class="fas fa-heart"></i></a>
                 </div>
             </div>
         </section>
 
-        <section id="significado" class="section">
+        <section id="comunidad" class="section">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-tag">Nuestro Lema</span>
-                    <h2 class="section-title">Ver, Amar y Servir</h2>
-                    <p class="section-subtitle">Tres palabras que resumen el camino de crecimiento espiritual y compromiso con los demás</p>
+                    <span class="section-tag">Nuestra Comunidad</span>
+                    <h2 class="section-title">Asesores VAS 2026</h2>
+                    <p class="section-subtitle">Guiados por el carisma dehoniano, acompañamos a los jóvenes en su camino de fe y servicio</p>
                 </div>
-                <div class="meaning-grid">
-                    <div class="meaning-card">
-                        <div class="meaning-icon">
-                            <i class="fas fa-eye"></i>
+                <div class="team-grid">
+                    <div class="team-card">
+                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Padre Tomás Cerda SCJ" onerror="this.src='https://placehold.co/400x400/1E3A5F/C9A03D?text=P.+Tomás+Cerda'">
+                        <div class="team-info">
+                            <h3>Padre Tomás Cerda SCJ</h3>
+                            <p class="role">Asesor Espiritual · Congregación Dehoniana</p>
+                            <p>Acompañamiento espiritual, dirección de retiros y celebración de la Eucaristía.</p>
                         </div>
-                        <h3>Ver</h3>
-                        <div class="meaning-word">Contemplar con el corazón</div>
-                        <p>Aprender a mirar la realidad con los ojos de Cristo, descubrir las necesidades de los demás y reconocer la presencia de Dios en cada persona.</p>
                     </div>
-                    <div class="meaning-card">
-                        <div class="meaning-icon">
-                            <i class="fas fa-heart"></i>
+                    <div class="team-card">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Profesora Constanza Espinoza" onerror="this.src='https://placehold.co/400x400/1E3A5F/C9A03D?text=Constanza+Espinoza'">
+                        <div class="team-info">
+                            <h3>Profesora Constanza Espinoza</h3>
+                            <p class="role">Coordinadora VAS · Sala Pastoral</p>
+                            <p>Organización de encuentros, formación de líderes juveniles y proyectos solidarios.</p>
                         </div>
-                        <h3>Amar</h3>
-                        <div class="meaning-word">Amar como Jesús amó</div>
-                        <p>Vivir el amor reparador del Corazón de Cristo, entregándose sin medida y construyendo fraternidad desde el cariño sincero y desinteresado.</p>
-                    </div>
-                    <div class="meaning-card">
-                        <div class="meaning-icon">
-                            <i class="fas fa-hands-helping"></i>
-                        </div>
-                        <h3>Servir</h3>
-                        <div class="meaning-word">Servir con alegría</div>
-                        <p>Poner los dones al servicio de los más necesitados, siguiendo el ejemplo de Jesús que vino a servir y no a ser servido.</p>
-                    </div>
-                </div>
-
-                <div class="schedule-highlight">
-                    <i class="fas fa-clock" style="font-size: 2rem; color: var(--dehon-gold); margin-bottom: 1rem; display: inline-block;"></i>
-                    <h3>Encuentros VAS</h3>
-                    <div class="schedule-time">Lunes 15:00 - 16:00 hrs</div>
-                    <div class="schedule-day">Capilla del Colegio ISC</div>
-                    <p style="margin-top: 1rem; opacity: 0.9;">Todos los lunes nos reunimos para crecer juntos en la fe, compartir la vida y prepararnos para servir a los demás.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="carisma" class="section carisma-section">
-            <div class="container">
-                <div class="carisma-grid">
-                    <div class="carisma-content">
-                        <span class="section-tag">Nuestro Fundador</span>
-                        <h2 class="section-title">Padre León Dehon</h2>
-                        <div class="carisma-quote">
-                            Amar a Jesucristo y hacerlo amar, reparar el corazón de Cristo presente en los más necesitados.
-                        </div>
-                        <p style="margin-bottom: 1rem;">El Padre León Gustavo Dehon (1843-1925), fundador de los Sacerdotes del Sagrado Corazón de Jesús, nos dejó un legado de amor reparador, entrega a los pobres y pasión por la justicia social. Su espiritualidad se centra en el amor al Corazón de Cristo que se derrama en servicio a los demás.</p>
-                        <p>En el Colegio ISC, la comunidad dehoniana VAS mantiene vivo este carisma, formando jóvenes con corazón reparador, comprometidos con la transformación social desde el amor y la misericordia.</p>
-                    </div>
-                    <div class="carisma-image" style="border-radius: 24px; overflow: hidden; box-shadow: var(--shadow-lg);">
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3c/Leo_Dehon.jpg/800px-Leo_Dehon.jpg" alt="Padre León Dehon" style="width: 100%; height: auto; display: block;" onerror="this.src='https://via.placeholder.com/500x400/4A2512/B8860B?text=P.+León+Dehon'">
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="taller" class="section" style="background: var(--dehon-cream-dark);">
+        <section id="donaciones" class="donations-section">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-tag">Formación Dehoniana</span>
-                    <h2 class="section-title">Taller VAS</h2>
-                    <p class="section-subtitle">Un espacio de encuentro, crecimiento y servicio para los jóvenes del Colegio ISC</p>
+                    <span class="section-tag">Apóyanos</span>
+                    <h2 class="section-title" style="color: var(--dehon-gold);">Haz tu donación</h2>
+                    <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Tu generosidad nos permite seguir ayudando a quienes más lo necesitan</p>
                 </div>
-                <div class="pillars-grid">
-                    <div class="pillar-card">
-                        <div class="pillar-icon">
-                            <i class="fas fa-praying-hands"></i>
+                <div class="donations-grid">
+                    <div class="donation-card">
+                        <h3 style="text-align: center;"><i class="fas fa-hand-holding-heart"></i> Elige un monto</h3>
+                        <div class="donation-amounts">
+                            <button class="amount-btn" data-amount="5000">$5.000</button>
+                            <button class="amount-btn" data-amount="10000">$10.000</button>
+                            <button class="amount-btn" data-amount="20000">$20.000</button>
+                            <button class="amount-btn" data-amount="50000">$50.000</button>
+                            <button class="amount-btn" data-amount="otro">Otro monto</button>
                         </div>
-                        <h3>Encuentros Espirituales</h3>
-                        <p>Retiros, convivencias y momentos de oración profunda para alimentar la vida espiritual desde el carisma dehoniano.</p>
+                        <input type="number" id="customAmount" placeholder="Ingresa otro monto" style="display: none; width: 100%; padding: 0.8rem; border-radius: 50px; border: none; margin: 1rem 0;">
+                        <div class="goal-progress">
+                            <p><i class="fas fa-chart-line"></i> Meta mensual: $5.000.000</p>
+                            <p>Recaudado: $2.400.000 (48%)</p>
+                            <div class="progress-bar"><div class="progress-fill"></div></div>
+                        </div>
+                        <button class="btn btn-primary" id="donateBtn" style="width: 100%; justify-content: center;"><i class="fas fa-credit-card"></i> Donar ahora</button>
+                        <p style="font-size: 0.8rem; text-align: center; margin-top: 1rem;"><i class="fas fa-lock"></i> Pago 100% seguro</p>
                     </div>
-                    <div class="pillar-card">
-                        <div class="pillar-icon">
-                            <i class="fas fa-users"></i>
+                    <div class="donation-card">
+                        <h3 style="text-align: center;"><i class="fas fa-university"></i> Transferencia bancaria</h3>
+                        <div class="bank-info">
+                            <h4>Datos para transferencia</h4>
+                            <div class="bank-detail"><strong>Banco:</strong> Banco de Chile <button class="copy-btn" data-copy="Banco de Chile"><i class="fas fa-copy"></i></button></div>
+                            <div class="bank-detail"><strong>Tipo de cuenta:</strong> Cuenta Corriente <button class="copy-btn" data-copy="Cuenta Corriente"><i class="fas fa-copy"></i></button></div>
+                            <div class="bank-detail"><strong>Titular:</strong> Comunidad VAS - Instituto Sagrado Corazón <button class="copy-btn" data-copy="Comunidad VAS - Instituto Sagrado Corazón"><i class="fas fa-copy"></i></button></div>
+                            <div class="bank-detail"><strong>RUT:</strong> 65.432.109-7 <button class="copy-btn" data-copy="65.432.109-7"><i class="fas fa-copy"></i></button></div>
+                            <div class="bank-detail"><strong>N° Cuenta:</strong> 1234-5678-90 <button class="copy-btn" data-copy="1234-5678-90"><i class="fas fa-copy"></i></button></div>
+                            <div class="bank-detail"><strong>Email:</strong> donaciones@vasdehonianos.cl <button class="copy-btn" data-copy="donaciones@vasdehonianos.cl"><i class="fas fa-copy"></i></button></div>
                         </div>
-                        <h3>Trabajo en Comunidad</h3>
-                        <p>Vivencia de la fraternidad dehoniana, compartiendo la vida, los desafíos y los sueños en un ambiente de confianza y acogida.</p>
-                    </div>
-                    <div class="pillar-card">
-                        <div class="pillar-icon">
-                            <i class="fas fa-seedling"></i>
-                        </div>
-                        <h3>Servicio Solidario</h3>
-                        <p>Proyectos de acción social que nos llevan a salir al encuentro de los más necesitados, siguiendo el ejemplo de Dehon.</p>
+                        <button class="btn btn-outline" id="certificateBtn" style="width: 100%; justify-content: center; margin-top: 1rem;"><i class="fas fa-file-pdf"></i> Descargar certificado (simulado)</button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="calendario" class="section">
+        <section id="eventos" class="section-light">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-tag">Próximas Actividades</span>
+                    <span class="section-tag">Próximas actividades</span>
                     <h2 class="section-title">Calendario VAS</h2>
-                    <p class="section-subtitle">Encuentros y celebraciones de nuestra comunidad</p>
+                    <p class="section-subtitle">Encuentros, retiros y jornadas solidarias</p>
                 </div>
                 <div class="calendar-grid">
                     <div class="calendar-item">
-                        <div class="calendar-date">
-                            <div class="day">07</div>
-                            <div class="month">Abril</div>
-                        </div>
-                        <div class="calendar-info">
-                            <h4>Inicio Taller VAS</h4>
-                            <p>Primer encuentro del año. Presentación y bienvenida a nuevos integrantes.</p>
-                        </div>
+                        <div class="calendar-date"><div class="day">05</div><div class="month">Mayo</div></div>
+                        <div class="calendar-info"><h4>Inicio Taller VAS</h4><p>Primer encuentro del mes. Bienvenida a nuevos integrantes.</p><small><i class="fas fa-clock"></i> 15:00-16:30 | Sala Pastoral</small></div>
                     </div>
                     <div class="calendar-item">
-                        <div class="calendar-date">
-                            <div class="day">14</div>
-                            <div class="month">Abril</div>
-                        </div>
-                        <div class="calendar-info">
-                            <h4>Taller: Ver con el Corazón</h4>
-                            <p>Reflexión sobre el primer pilar: aprender a mirar la realidad como Jesús.</p>
-                        </div>
+                        <div class="calendar-date"><div class="day">12</div><div class="month">Mayo</div></div>
+                        <div class="calendar-info"><h4>Taller: Ver con el Corazón</h4><p>Reflexión sobre el primer pilar: aprender a mirar como Jesús.</p><small><i class="fas fa-clock"></i> 15:00-16:30 | Sala Pastoral</small></div>
                     </div>
                     <div class="calendar-item">
-                        <div class="calendar-date">
-                            <div class="day">28</div>
-                            <div class="month">Abril</div>
-                        </div>
-                        <div class="calendar-info">
-                            <h4>Jornada Solidaria</h4>
-                            <p>Visita a hogar de ancianos y jornada de servicio comunitario.</p>
-                        </div>
+                        <div class="calendar-date"><div class="day">19</div><div class="month">Mayo</div></div>
+                        <div class="calendar-info"><h4>Jornada Solidaria</h4><p>Visita a hogar de ancianos y jornada de servicio.</p><small><i class="fas fa-clock"></i> 09:00-13:00 | Salida desde el colegio</small></div>
                     </div>
                     <div class="calendar-item">
-                        <div class="calendar-date">
-                            <div class="day">12</div>
-                            <div class="month">Mayo</div>
-                        </div>
-                        <div class="calendar-info">
-                            <h4>Convivencia Fraterna</h4>
-                            <p>Encuentro de integración y celebración de la comunidad VAS.</p>
-                        </div>
+                        <div class="calendar-date"><div class="day">26</div><div class="month">Mayo</div></div>
+                        <div class="calendar-info"><h4>Convivencia Fraterna</h4><p>Encuentro de integración y celebración comunitaria.</p><small><i class="fas fa-clock"></i> 15:00-18:00 | Capilla del colegio</small></div>
+                    </div>
+                </div>
+                <div class="countdown">
+                    <h3><i class="fas fa-hourglass-half"></i> Próximo encuentro</h3>
+                    <div class="countdown-timer" id="countdown">
+                        <div><span id="days">0</span> días</div>
+                        <div><span id="hours">0</span> horas</div>
+                        <div><span id="minutes">0</span> min</div>
+                        <div><span id="seconds">0</span> seg</div>
+                    </div>
+                    <button class="btn btn-outline" style="margin-top: 1rem; background: rgba(255,255,255,0.1);" onclick="alert('Evento agregado a tu calendario (simulado)')"><i class="fas fa-calendar-plus"></i> Agregar a mi calendario</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog" class="section-maroon">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Noticias y reflexiones</span>
+                    <h2 class="section-title">Últimas publicaciones</h2>
+                    <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Historias, testimonios y anuncios de nuestra comunidad</p>
+                </div>
+                <div class="blog-grid">
+                    <div class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1507699622108-4be3abd695ad?ixlib=rb-4.0.3" alt="Retiro espiritual">
+                        <div class="blog-content"><span class="blog-category">Espiritualidad</span><h3>Retiro de Cuaresma 2026</h3><p>Más de 50 jóvenes participaron en el retiro de Cuaresma, un espacio de reflexión y encuentro con Dios.</p><div class="blog-date"><i class="far fa-calendar-alt"></i> 10 de abril, 2026</div><a href="#" onclick="return false" style="color: var(--dehon-gold); text-decoration: none;">Leer más →</a></div>
+                    </div>
+                    <div class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?ixlib=rb-4.0.3" alt="Campaña solidaria">
+                        <div class="blog-content"><span class="blog-category">Solidaridad</span><h3>Campaña de invierno 2026</h3><p>Recolectamos más de 500 prendas de abrigo para familias vulnerables de nuestra comuna.</p><div class="blog-date"><i class="far fa-calendar-alt"></i> 5 de abril, 2026</div><a href="#" onclick="return false" style="color: var(--dehon-gold); text-decoration: none;">Leer más →</a></div>
+                    </div>
+                    <div class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?ixlib=rb-4.0.3" alt="Encuentro VAS">
+                        <div class="blog-content"><span class="blog-category">Eventos</span><h3>Inicio del Taller VAS 2026</h3><p>Dimos la bienvenida a los nuevos integrantes de la comunidad con una jornada llena de alegría y fraternidad.</p><div class="blog-date"><i class="far fa-calendar-alt"></i> 28 de marzo, 2026</div><a href="#" onclick="return false" style="color: var(--dehon-gold); text-decoration: none;">Leer más →</a></div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="galeria" class="section" style="background: var(--dehon-cream-dark);">
+        <section id="galeria" class="section">
             <div class="container">
                 <div class="section-header">
-                    <span class="section-tag">Memoria Viva</span>
-                    <h2 class="section-title">Galería de Encuentros</h2>
-                    <p class="section-subtitle">Momentos que reflejan el espíritu de nuestra comunidad VAS</p>
+                    <span class="section-tag">Memoria visual</span>
+                    <h2 class="section-title">Galería fotográfica</h2>
+                    <p class="section-subtitle">Momentos que reflejan el espíritu de nuestra comunidad</p>
                 </div>
                 <div class="gallery-grid">
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1507699622108-4be3abd695ad?ixlib=rb-4.0.3" alt="Encuentro de oración">
-                        <div class="gallery-overlay">
-                            <i class="fas fa-search-plus"></i>
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1507699622108-4be3abd695ad?ixlib=rb-4.0.3" alt="Encuentro de oración"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1446057032654-9d8885db76c6?ixlib=rb-4.0.3" alt="Retiro espiritual"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?ixlib=rb-4.0.3" alt="Jornada solidaria"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+                    <div class="gallery-item"><img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3" alt="Convivencia"><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-light">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Testimonios</span>
+                    <h2 class="section-title">Voces de nuestra comunidad</h2>
+                    <p class="section-subtitle">Lo que dicen quienes han vivido la experiencia VAS</p>
+                </div>
+                <div class="swiper testimonials-slider">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"VAS me ha enseñado el verdadero significado del servicio. Ahora entiendo que dar es recibir."</p><h4>María, 3° medio</h4></div></div>
+                        <div class="swiper-slide"><div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"Gracias a VAS conocí el carisma dehoniano y descubrí mi vocación de servicio."</p><h4>José, 4° medio</h4></div></div>
+                        <div class="swiper-slide"><div class="testimonial-card"><i class="fas fa-quote-left"></i><p>"La comunidad VAS es mi segundo hogar. Aquí he encontrado amigos y un propósito."</p><h4>Valentina, voluntaria</h4></div></div>
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+                <div class="testimonial-form">
+                    <h3 style="text-align: center; margin-bottom: 1rem;">Comparte tu experiencia</h3>
+                    <form id="testimonialForm" style="display: flex; gap: 1rem; flex-wrap: wrap;">
+                        <input type="text" placeholder="Tu nombre" style="flex: 1; padding: 0.8rem; border-radius: 50px; border: 1px solid var(--gray-200);" required>
+                        <textarea placeholder="Tu testimonio..." rows="2" style="flex: 2; padding: 0.8rem; border-radius: 20px; border: 1px solid var(--gray-200);" required></textarea>
+                        <button type="submit" class="btn btn-primary">Enviar testimonio</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Preguntas frecuentes</span>
+                    <h2 class="section-title">Resolvemos tus dudas</h2>
+                </div>
+                <div class="faq-grid">
+                    <div class="faq-item"><div class="faq-question">¿Quiénes pueden participar en VAS? <i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Jóvenes de 1° a IV° medio del Instituto Sagrado Corazón que quieran compartir la vida y la fe con sus pares y con quienes más lo necesitan.</p></div></div>
+                    <div class="faq-item"><div class="faq-question">¿Cuándo y dónde nos reunimos? <i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Todos los lunes de 15:00 a 16:30 hrs en la Sala Pastoral del colegio.</p></div></div>
+                    <div class="faq-item"><div class="faq-question">¿Cómo puedo inscribirme? <i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Debes inscribirte con la Profesora Constanza Espinoza en la Sala Pastoral.</p></div></div>
+                    <div class="faq-item"><div class="faq-question">¿Cómo puedo hacer una donación? <i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Puedes transferir a los datos bancarios que aparecen en la sección de donaciones o contactarnos directamente.</p></div></div>
+                    <div class="faq-item"><div class="faq-question">¿Qué actividades realizamos? <i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Oración, música, formación, compartir fraterno, obras sociales, entretención, dinámicas y mucho más.</p></div></div>
+                    <div class="faq-item"><div class="faq-question">¿Quiénes son los asesores? <i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>El Padre Tomás Cerda SCJ como asesor espiritual y la Profesora Constanza Espinoza como coordinadora.</p></div></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contacto" class="section-light">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Comunícate con nosotros</span>
+                    <h2 class="section-title">Contáctanos</h2>
+                </div>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Oficina VAS</h3>
+                        <p style="margin-bottom: 1.5rem;">Sala Pastoral - Instituto Sagrado Corazón</p>
+                        <div class="contact-detail"><i class="fas fa-map-marker-alt"></i> Av. Los Presidentes 1234, Santiago</div>
+                        <div class="contact-detail"><i class="fas fa-phone"></i> +56 2 1234 5678</div>
+                        <div class="contact-detail"><i class="fas fa-envelope"></i> vas@dehonianos.cl</div>
+                        <div class="contact-detail"><i class="fas fa-clock"></i> Horario: Lunes 15:00-16:30</div>
+                        <div class="social-links" style="display: flex; gap: 1rem; margin-top: 1rem;">
+                            <a href="#" style="color: white;"><i class="fab fa-instagram fa-lg"></i></a>
+                            <a href="#" style="color: white;"><i class="fab fa-facebook fa-lg"></i></a>
+                            <a href="#" style="color: white;"><i class="fab fa-youtube fa-lg"></i></a>
                         </div>
                     </div>
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1446057032654-9d8885db76c6?ixlib=rb-4.0.3" alt="Retiro espiritual">
-                        <div class="gallery-overlay">
-                            <i class="fas fa-search-plus"></i>
-                        </div>
+                    <div class="contact-form">
+                        <form id="contactForm">
+                            <div class="form-group"><input type="text" placeholder="Nombre completo" required></div>
+                            <div class="form-group"><input type="email" placeholder="Correo electrónico" required></div>
+                            <div class="form-group"><input type="tel" placeholder="Teléfono"></div>
+                            <div class="form-group"><select><option>Quiero ser voluntario</option><option>Quiero hacer una donación</option><option>Más información sobre VAS</option><option>Otra consulta</option></select></div>
+                            <div class="form-group"><textarea rows="3" placeholder="Tu mensaje..."></textarea></div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Enviar mensaje <i class="fas fa-paper-plane"></i></button>
+                        </form>
                     </div>
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1529655683826-aba9b3e77383?ixlib=rb-4.0.3" alt="Jornada solidaria">
-                        <div class="gallery-overlay">
-                            <i class="fas fa-search-plus"></i>
-                        </div>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="https://images.unsplash.com/photo-1511632765486-a01980e01a18?ixlib=rb-4.0.3" alt="Convivencia">
-                        <div class="gallery-overlay">
-                            <i class="fas fa-search-plus"></i>
-                        </div>
+                </div>
+                <div class="map-container">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3329.123456789!2d-70.64827!3d-33.45678!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDI3JzI0LjQiUyA3MMKwMzgnNTMuOSJX!5e0!3m2!1ses!2scl!4v1234567890" width="100%" height="300" style="border:0; border-radius: 20px;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <div class="newsletter">
+                    <h3><i class="fas fa-envelope-open-text"></i> Suscríbete a nuestro boletín</h3>
+                    <p>Recibe noticias, reflexiones y convocatorias de la comunidad VAS.</p>
+                    <div class="newsletter-form">
+                        <input type="email" placeholder="Tu correo electrónico" id="newsletterEmail">
+                        <button id="newsletterBtn">Suscribirme <i class="fas fa-arrow-right"></i></button>
                     </div>
                 </div>
             </div>
@@ -1032,98 +536,98 @@
     <footer class="footer">
         <div class="container">
             <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>VAS</h4>
-                    <p style="opacity: 0.7;">Ver, Amar y Servir</p>
-                    <div class="vas-footer-symbol">
-                        <i class="fas fa-eye"></i>
-                        <i class="fas fa-heart" style="color: var(--dehon-red);"></i>
-                        <i class="fas fa-hands-helping"></i>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h4>Enlaces</h4>
-                    <ul>
-                        <li><a href="#significado">Ver, Amar, Servir</a></li>
-                        <li><a href="#carisma">Carisma Dehoniano</a></li>
-                        <li><a href="#taller">Taller VAS</a></li>
-                        <li><a href="#calendario">Calendario</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Horario</h4>
-                    <ul>
-                        <li><i class="fas fa-clock" style="margin-right: 0.5rem;"></i> Lunes 15:00 - 16:00 hrs</li>
-                        <li><i class="fas fa-map-marker-alt" style="margin-right: 0.5rem;"></i> Capilla del Colegio</li>
-                        <li><i class="fas fa-envelope" style="margin-right: 0.5rem;"></i> vas@colegioisc.cl</li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Comunidad Dehoniana</h4>
-                    <ul>
-                        <li>Congregación SCJ</li>
-                        <li>Padre León Dehon</li>
-                        <li>"Que todos sean uno"</li>
-                    </ul>
-                </div>
+                <div class="footer-col"><h4>VAS Comunidad</h4><p>Ver, Amar y Servir</p><div style="display: flex; gap: 0.5rem; margin-top: 1rem;"><i class="fas fa-eye"></i> <i class="fas fa-heart" style="color: var(--spirit-red);"></i> <i class="fas fa-hands-helping"></i></div></div>
+                <div class="footer-col"><h4>Enlaces</h4><ul><li><a href="#home">Inicio</a></li><li><a href="#comunidad">Comunidad</a></li><li><a href="#donaciones">Donaciones</a></li><li><a href="#eventos">Eventos</a></li><li><a href="#blog">Noticias</a></li></ul></div>
+                <div class="footer-col"><h4>Horario</h4><ul><li><i class="fas fa-clock"></i> Lunes 15:00-16:30</li><li><i class="fas fa-map-marker-alt"></i> Sala Pastoral</li><li><i class="fas fa-envelope"></i> vas@dehonianos.cl</li></ul></div>
+                <div class="footer-col"><h4>Cuenta donaciones</h4><ul><li>Banco de Chile</li><li>CC 1234-5678-90</li><li>RUT 65.432.109-7</li></ul></div>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Colegio ISC - Comunidad Dehoniana VAS | Ver, Amar y Servir</p>
-                <p class="dehon-signature" style="margin-top: 0.5rem;">Todos los lunes · 15:00 a 16:00 hrs · Te esperamos</p>
-            </div>
+            <div class="footer-bottom"><p>&copy; 2026 Instituto Sagrado Corazón - Comunidad Dehoniana VAS | Ver, Amar y Servir</p><p style="margin-top: 0.5rem;">Todos los lunes · 15:00 a 16:30 hrs · ¡Te esperamos!</p></div>
         </div>
     </footer>
 
-    <div id="modal" class="modal">
-        <span class="modal-close">&times;</span>
-        <img id="modal-img" src="" alt="Imagen ampliada">
-    </div>
+    <div id="modal" class="modal"><span class="modal-close">&times;</span><img id="modal-img" src=""></div>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
+        // Header scroll
         const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            header.classList.toggle('scrolled', window.scrollY > 100);
+        window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 100));
+
+        // Mobile menu
+        document.getElementById('mobileMenuBtn').addEventListener('click', () => document.getElementById('navMenu').classList.toggle('active'));
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', function(e) {
+            e.preventDefault();
+            const t = document.querySelector(this.getAttribute('href'));
+            if(t) { document.getElementById('navMenu')?.classList.remove('active'); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+        }));
+
+        // Countdown para próximo lunes 15:00
+        function updateCountdown() {
+            const now = new Date();
+            const nextMonday = new Date();
+            nextMonday.setDate(now.getDate() + ((1 + 7 - now.getDay()) % 7 || 7));
+            nextMonday.setHours(15, 0, 0, 0);
+            if (now > nextMonday) nextMonday.setDate(nextMonday.getDate() + 7);
+            const diff = nextMonday - now;
+            document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+            document.getElementById('hours').innerText = Math.floor((diff % (86400000)) / 3600000);
+            document.getElementById('minutes').innerText = Math.floor((diff % 3600000) / 60000);
+            document.getElementById('seconds').innerText = Math.floor((diff % 60000) / 1000);
+        }
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+
+        // Galería modal
+        const modal = document.getElementById('modal'), modalImg = document.getElementById('modal-img');
+        document.querySelectorAll('.gallery-item').forEach(i => i.addEventListener('click', () => { modal.style.display = 'flex'; modalImg.src = i.querySelector('img').src; document.body.style.overflow = 'hidden'; }));
+        document.querySelector('.modal-close')?.addEventListener('click', () => { modal.style.display = 'none'; document.body.style.overflow = 'auto'; });
+        modal?.addEventListener('click', (e) => { if(e.target === modal) { modal.style.display = 'none'; document.body.style.overflow = 'auto'; } });
+
+        // Donaciones
+        const amountBtns = document.querySelectorAll('.amount-btn');
+        const customAmount = document.getElementById('customAmount');
+        let selectedAmount = 10000;
+        amountBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                amountBtns.forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                if(btn.dataset.amount === 'otro') { customAmount.style.display = 'block'; selectedAmount = null; }
+                else { customAmount.style.display = 'none'; selectedAmount = parseInt(btn.dataset.amount); }
+            });
         });
+        document.getElementById('donateBtn')?.addEventListener('click', () => {
+            let amount = selectedAmount;
+            if(customAmount.style.display === 'block' && customAmount.value) amount = parseInt(customAmount.value);
+            if(!amount) alert('Por favor selecciona o ingresa un monto');
+            else alert(`¡Gracias por tu donación de $${amount.toLocaleString('es-CL')}!\n\nPuedes transferir a:\nBanco de Chile\nCuenta Corriente: 1234-5678-90\nRUT: 65.432.109-7\nTitular: Comunidad VAS\n\n¡Dios te bendiga!`);
+        });
+        document.getElementById('certificateBtn')?.addEventListener('click', () => alert('Certificado de donación descargado (simulado). Pronto estará disponible la descarga real.'));
 
-        const mobileBtn = document.getElementById('mobileMenuBtn');
-        const navMenu = document.getElementById('navMenu');
-        mobileBtn.addEventListener('click', () => navMenu.classList.toggle('active'));
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    navMenu.classList.remove('active');
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
+        // Copiar datos bancarios
+        document.querySelectorAll('.copy-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const text = btn.dataset.copy;
+                navigator.clipboard.writeText(text);
+                const original = btn.innerHTML;
+                btn.innerHTML = '<i class="fas fa-check"></i>';
+                setTimeout(() => btn.innerHTML = original, 1500);
             });
         });
 
-        const modal = document.getElementById('modal');
-        const modalImg = document.getElementById('modal-img');
-        const closeModal = document.querySelector('.modal-close');
-        
-        document.querySelectorAll('.gallery-item').forEach(item => {
-            item.addEventListener('click', () => {
-                const img = item.querySelector('img');
-                modal.style.display = 'flex';
-                modalImg.src = img.src;
-                document.body.style.overflow = 'hidden';
-            });
+        // Testimonios Swiper
+        new Swiper('.testimonials-slider', { slidesPerView: 1, spaceBetween: 30, loop: true, autoplay: { delay: 5000 }, pagination: { el: '.swiper-pagination', clickable: true }, breakpoints: { 768: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } } });
+
+        // FAQ acordeón
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.addEventListener('click', () => { q.parentElement.classList.toggle('active'); });
         });
-        
-        closeModal.addEventListener('click', () => {
-            modal.style.display = 'none';
-            document.body.style.overflow = 'auto';
-        });
-        
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            }
-        });
+
+        // Formularios
+        document.getElementById('testimonialForm')?.addEventListener('submit', (e) => { e.preventDefault(); alert('¡Gracias por compartir tu testimonio!'); e.target.reset(); });
+        document.getElementById('contactForm')?.addEventListener('submit', (e) => { e.preventDefault(); alert('Mensaje enviado. Te contactaremos pronto.'); e.target.reset(); });
+        document.getElementById('newsletterBtn')?.addEventListener('click', () => { const email = document.getElementById('newsletterEmail').value; if(email) alert(`¡Gracias por suscribirte con ${email}! Recibirás nuestro boletín mensual.`); else alert('Ingresa un correo válido.'); });
     </script>
 </body>
 </html>
