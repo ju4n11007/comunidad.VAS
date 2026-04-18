@@ -1,626 +1,1055 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Comunidad VAS - Instituto Sagrado Corazón Dehonianos. Ver, Amar y Servir. Jóvenes de enseñanza media compartiendo la fe y el servicio.">
-    <meta name="keywords" content="VAS, Instituto Sagrado Corazón, Dehonianos, Ver Amar Servir, comunidad dehoniana, pastoral juvenil, San Bernardo">
-    <meta name="author" content="Instituto Sagrado Corazón - Dehonianos">
-    <title>VAS | Ver, Amar y Servir - Instituto Sagrado Corazón Dehonianos</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        :root {
-            --dehon-gold: #C9A03D;
-            --dehon-gold-dark: #9B7E2E;
-            --dehon-maroon: #8B1A1A;
-            --dehon-maroon-light: #A52A2A;
-            --mary-blue: #1E3A5F;
-            --mary-blue-light: #2C5282;
-            --papal-white: #FFFFFF;
-            --papal-offwhite: #FDFBF7;
-            --spirit-red: #C0392B;
-            --hope-green: #27AE60;
-            --gray-100: #F8F9FA;
-            --gray-200: #E9ECEF;
-            --gray-600: #6C757D;
-            --gray-800: #343A40;
-            --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
-            --shadow-md: 0 8px 24px rgba(0,0,0,0.08);
-            --shadow-lg: 0 16px 40px rgba(0,0,0,0.12);
-            --transition: all 0.3s ease;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comunidad VAS · Ver, Amar y Servir</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,800;1,400;1,600&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --wine:   #7B1A2A;
+      --wine2:  #5C1020;
+      --gold:   #C9973A;
+      --gold2:  #E8B85A;
+      --cream:  #FAF6EF;
+      --sand:   #EDE4D3;
+      --dark:   #1A0A0E;
+      --gray:   #6B5B62;
+      --white:  #FFFFFF;
+      --r: 1rem;
+    }
 
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--gray-800);
-            background-color: var(--papal-offwhite);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+    html { scroll-behavior: smooth; }
 
-        h1, h2, h3, h4, .serif {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 700;
-        }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--cream);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
 
-        .container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+    /* ── NAV ─────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 3rem;
+      background: rgba(250,246,239,0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(123,26,42,0.12);
+      transition: box-shadow .3s;
+    }
+    nav.scrolled { box-shadow: 0 4px 30px rgba(123,26,42,0.1); }
 
-        /* Header */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(30, 58, 95, 0.96);
-            backdrop-filter: blur(12px);
-            z-index: 1000;
-            transition: var(--transition);
-            border-bottom: 1px solid rgba(201, 160, 61, 0.3);
-        }
-        .header.scrolled { background: var(--mary-blue); box-shadow: var(--shadow-md); }
-        .header-container { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 2rem; max-width: 1400px; margin: 0 auto; }
-        .logo h1 { font-size: 1.4rem; color: var(--dehon-gold); }
-        .logo p { font-size: 0.65rem; color: rgba(255,255,255,0.8); letter-spacing: 1px; }
-        .nav-menu { display: flex; gap: 2rem; list-style: none; }
-        .nav-link { color: white; text-decoration: none; font-weight: 500; font-size: 0.9rem; transition: var(--transition); position: relative; }
-        .nav-link::after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0; height: 2px; background: var(--dehon-gold); transition: var(--transition); }
-        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-        .nav-link:hover { color: var(--dehon-gold); }
-        .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem; font-weight: 800;
+      color: var(--wine);
+      letter-spacing: .04em;
+      text-decoration: none;
+    }
+    .nav-logo span { color: var(--gold); }
 
-        /* Botón flotante donación */
-        .floating-donate {
-            position: fixed; bottom: 2rem; right: 2rem; z-index: 999;
-            background: var(--spirit-red); color: white; width: 60px; height: 60px;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            box-shadow: var(--shadow-lg); cursor: pointer; transition: var(--transition);
-            animation: pulse 2s infinite;
-        }
-        .floating-donate:hover { transform: scale(1.1); background: var(--dehon-maroon); }
-        @keyframes pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(192,57,43,0.4); } 50% { box-shadow: 0 0 0 15px rgba(192,57,43,0); } }
+    .nav-links { display: flex; gap: 2.2rem; list-style: none; }
+    .nav-links a {
+      font-size: .82rem; font-weight: 500; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--dark); text-decoration: none;
+      position: relative; padding-bottom: 2px;
+      transition: color .2s;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 0; height: 1.5px; background: var(--gold);
+      transition: width .3s;
+    }
+    .nav-links a:hover { color: var(--wine); }
+    .nav-links a:hover::after { width: 100%; }
 
-        /* WhatsApp flotante */
-        .floating-wa {
-            position: fixed; bottom: 2rem; left: 2rem; z-index: 999;
-            background: #25D366; color: white; width: 60px; height: 60px;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            box-shadow: var(--shadow-lg); cursor: pointer; transition: var(--transition);
-        }
-        .floating-wa:hover { transform: scale(1.1); }
+    .nav-cta {
+      background: var(--wine); color: var(--white) !important;
+      padding: .45rem 1.2rem; border-radius: 40px;
+      transition: background .2s !important;
+    }
+    .nav-cta:hover { background: var(--gold) !important; color: var(--dark) !important; }
+    .nav-cta::after { display: none !important; }
 
-        /* SÍMBOLO ORIGINAL VAS - FÁCIL DE RECORDAR */
-        .vas-symbol {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            background: linear-gradient(135deg, rgba(201,160,61,0.15), rgba(30,58,95,0.1));
-            padding: 0.8rem 1.5rem;
-            border-radius: 100px;
-            border: 1px solid rgba(201,160,61,0.3);
-            backdrop-filter: blur(4px);
-        }
-        .vas-symbol i {
-            font-size: 1.6rem;
-            transition: var(--transition);
-        }
-        .vas-symbol i:nth-child(1) { color: var(--dehon-gold); }
-        .vas-symbol i:nth-child(2) { color: var(--spirit-red); }
-        .vas-symbol i:nth-child(3) { color: var(--hope-green); }
-        .vas-symbol span {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 700;
-            font-size: 1.3rem;
-            letter-spacing: 2px;
-            color: var(--dehon-gold);
-            margin-left: 0.5rem;
-        }
-        .vas-symbol:hover i {
-            transform: translateY(-3px);
-        }
-        .vas-symbol:hover i:nth-child(1) { text-shadow: 0 0 8px var(--dehon-gold); }
-        .vas-symbol:hover i:nth-child(2) { text-shadow: 0 0 8px var(--spirit-red); }
-        .vas-symbol:hover i:nth-child(3) { text-shadow: 0 0 8px var(--hope-green); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { width: 24px; height: 2px; background: var(--wine); transition: .3s; }
 
-        /* Hero */
-        .hero {
-            min-height: 100vh;
-            background: linear-gradient(135deg, rgba(30, 58, 95, 0.85), rgba(139, 26, 26, 0.75));
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            display: flex;
-            align-items: center;
-            margin-top: 0;
-        }
-        .hero-content { max-width: 900px; margin: 0 auto; text-align: center; color: white; padding: 8rem 2rem 4rem; }
-        .hero-logo { font-size: 1rem; letter-spacing: 3px; margin-bottom: 1rem; opacity: 0.9; }
-        .hero h1 { font-size: 4rem; margin-bottom: 0.5rem; }
-        .hero-meaning { font-size: 2rem; font-family: 'Cormorant Garamond', serif; color: var(--dehon-gold); margin-bottom: 1rem; }
-        .hero-description { max-width: 700px; margin: 1rem auto; font-size: 1rem; opacity: 0.95; }
-        .hero-schedule { background: rgba(201, 160, 61, 0.2); display: inline-block; padding: 0.8rem 1.5rem; border-radius: 50px; margin: 1rem 0; border: 1px solid rgba(201, 160, 61, 0.5); }
-        .hero-contact { margin-top: 1rem; font-size: 0.9rem; }
-        .btn { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.9rem 2rem; border-radius: 50px; font-weight: 600; text-decoration: none; transition: var(--transition); }
-        .btn-primary { background: var(--dehon-gold); color: var(--mary-blue); }
-        .btn-primary:hover { background: var(--dehon-gold-dark); transform: translateY(-3px); box-shadow: var(--shadow-lg); }
-        .btn-outline { background: transparent; border: 2px solid var(--dehon-gold); color: var(--dehon-gold); }
-        .btn-outline:hover { background: var(--dehon-gold); color: var(--mary-blue); transform: translateY(-3px); }
+    /* ── HERO ────────────────────────────────── */
+    #home {
+      min-height: 100vh;
+      display: flex; align-items: center;
+      position: relative; overflow: hidden;
+      background: linear-gradient(135deg, var(--wine2) 0%, var(--wine) 60%, #A52840 100%);
+    }
 
-        /* Secciones */
-        .section { padding: 5rem 0; }
-        .section-light { background: var(--papal-offwhite); }
-        .section-dark { background: var(--mary-blue); color: white; }
-        .section-maroon { background: var(--dehon-maroon); color: white; }
-        .section-header { text-align: center; max-width: 750px; margin: 0 auto 3rem; }
-        .section-tag { display: inline-block; font-size: 0.75rem; font-weight: 600; text-transform: uppercase; letter-spacing: 3px; color: var(--dehon-gold); margin-bottom: 1rem; }
-        .section-title { font-size: 2.8rem; margin-bottom: 1rem; }
-        .section-dark .section-title, .section-maroon .section-title { color: var(--dehon-gold); }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 70% 50%, rgba(201,151,58,.18) 0%, transparent 70%),
+        radial-gradient(ellipse 50% 80% at 20% 20%, rgba(255,255,255,.05) 0%, transparent 60%);
+    }
+    .hero-pattern {
+      position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,.07) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+    .hero-cross {
+      position: absolute; right: 8%; top: 50%; transform: translateY(-50%);
+      font-size: clamp(14rem, 25vw, 22rem);
+      color: rgba(255,255,255,.05);
+      font-family: serif; font-weight: 100;
+      line-height: 1; user-select: none;
+      animation: floatY 6s ease-in-out infinite;
+    }
+    @keyframes floatY {
+      0%,100% { transform: translateY(-50%) translateX(0); }
+      50%      { transform: translateY(-52%) translateX(8px); }
+    }
 
-        /* Tarjetas equipo */
-        .team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; max-width: 800px; margin: 0 auto; }
-        .team-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-md); transition: var(--transition); text-align: center; }
-        .team-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
-        .team-card .team-img-placeholder { width: 100%; height: 280px; background: linear-gradient(135deg, var(--mary-blue), var(--dehon-maroon)); display: flex; align-items: center; justify-content: center; color: white; font-size: 1rem; }
-        .team-info { padding: 1.5rem; }
-        .team-info h3 { color: var(--mary-blue); font-size: 1.3rem; }
-        .team-info .role { color: var(--dehon-gold); font-weight: 600; margin: 0.25rem 0; }
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 8rem 3rem 4rem;
+      max-width: 760px;
+    }
+    .hero-badge {
+      display: inline-block;
+      font-size: .7rem; letter-spacing: .2em; text-transform: uppercase;
+      color: var(--gold2); border: 1px solid rgba(201,151,58,.5);
+      padding: .35rem 1rem; border-radius: 40px; margin-bottom: 2rem;
+      animation: fadeUp .8s .1s both;
+    }
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3.5rem, 8vw, 6.5rem);
+      line-height: 1;
+      color: var(--white);
+      font-weight: 800;
+      letter-spacing: -.01em;
+      margin-bottom: .5rem;
+      animation: fadeUp .8s .2s both;
+    }
+    .hero-title em {
+      font-style: italic; color: var(--gold2);
+      display: block;
+    }
+    .hero-subtitle {
+      font-family: 'DM Serif Display', serif;
+      font-size: clamp(1rem, 2.5vw, 1.4rem);
+      color: rgba(255,255,255,.7); letter-spacing: .25em; text-transform: uppercase;
+      margin-bottom: 1.8rem;
+      animation: fadeUp .8s .3s both;
+    }
+    .hero-pillars {
+      display: flex; gap: 1rem; margin-bottom: 2.5rem;
+      animation: fadeUp .8s .35s both;
+    }
+    .hero-pill {
+      background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2);
+      color: rgba(255,255,255,.9); padding: .4rem 1rem;
+      border-radius: 40px; font-size: .82rem; letter-spacing: .06em;
+      backdrop-filter: blur(8px);
+    }
+    .hero-desc {
+      color: rgba(255,255,255,.75); font-size: 1rem; line-height: 1.8;
+      max-width: 540px; margin-bottom: 2.5rem;
+      animation: fadeUp .8s .4s both;
+    }
+    .hero-actions {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      animation: fadeUp .8s .5s both;
+    }
+    .btn {
+      display: inline-block; padding: .85rem 2rem;
+      border-radius: 50px; font-size: .9rem; font-weight: 500;
+      text-decoration: none; letter-spacing: .04em;
+      transition: transform .2s, box-shadow .2s, background .2s;
+      cursor: pointer; border: none;
+    }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary {
+      background: var(--gold); color: var(--dark);
+      box-shadow: 0 6px 24px rgba(201,151,58,.4);
+    }
+    .btn-primary:hover { background: var(--gold2); box-shadow: 0 10px 32px rgba(201,151,58,.5); }
+    .btn-outline {
+      background: transparent; color: var(--white);
+      border: 1.5px solid rgba(255,255,255,.5);
+    }
+    .btn-outline:hover { background: rgba(255,255,255,.1); border-color: var(--white); }
 
-        /* Donaciones */
-        .donations-section { background: linear-gradient(135deg, #1a472a, #2d6a4f); color: white; }
-        .donations-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-        .donation-card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); border-radius: 24px; padding: 2rem; border: 1px solid rgba(255,255,255,0.2); }
-        .bank-info { background: white; color: var(--gray-800); border-radius: 20px; padding: 1.5rem; margin-top: 1.5rem; }
-        .bank-detail { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 0; border-bottom: 1px solid var(--gray-200); font-family: monospace; font-size: 0.9rem; flex-wrap: wrap; gap: 0.5rem; }
-        .bank-detail strong { font-family: 'Inter', sans-serif; }
-        .copy-btn { background: var(--dehon-gold); border: none; color: var(--mary-blue); padding: 0.3rem 0.8rem; border-radius: 20px; cursor: pointer; font-size: 0.75rem; transition: var(--transition); }
-        .copy-btn:hover { background: var(--dehon-gold-dark); }
-        .optional-message { background: rgba(255,255,255,0.15); border-radius: 16px; padding: 1rem; margin-top: 1rem; text-align: center; font-size: 0.9rem; border-left: 4px solid var(--dehon-gold); }
-        .fake-data-warning { background: rgba(255,193,7,0.2); border: 1px solid #ffc107; border-radius: 12px; padding: 0.8rem; margin-bottom: 1rem; text-align: center; font-size: 0.85rem; }
-        .fake-data-warning i { color: #ffc107; margin-right: 0.5rem; }
+    .hero-schedule {
+      position: absolute; bottom: 2.5rem; left: 3rem;
+      display: flex; align-items: center; gap: .8rem;
+      color: rgba(255,255,255,.6); font-size: .82rem;
+      animation: fadeUp .8s .6s both;
+    }
+    .hero-schedule strong { color: var(--gold2); }
+    .hero-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gold2); }
 
-        /* Calendario */
-        .calendar-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-        .calendar-item { background: white; border-radius: 16px; padding: 1.5rem; display: flex; gap: 1rem; box-shadow: var(--shadow-sm); transition: var(--transition); }
-        .calendar-item:hover { box-shadow: var(--shadow-md); transform: translateX(5px); }
-        .calendar-date { text-align: center; min-width: 70px; background: var(--gray-100); padding: 0.5rem; border-radius: 12px; }
-        .calendar-date .day { font-size: 1.8rem; font-weight: 700; color: var(--dehon-gold); font-family: 'Cormorant Garamond', serif; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
 
-        /* Blog - SOLO TEXTO */
-        .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
-        .blog-card { background: white; border-radius: 20px; overflow: hidden; box-shadow: var(--shadow-sm); transition: var(--transition); text-align: center; }
-        .blog-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-lg); }
-        .blog-img-placeholder { width: 100%; height: 200px; background: linear-gradient(135deg, var(--gray-200), var(--gray-100)); display: flex; align-items: center; justify-content: center; color: var(--gray-600); font-size: 1rem; font-weight: 500; }
-        .blog-content { padding: 1.5rem; }
-        .blog-category { display: inline-block; background: var(--dehon-gold); color: white; font-size: 0.7rem; padding: 0.2rem 0.8rem; border-radius: 20px; margin-bottom: 0.5rem; }
-        .blog-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; color: var(--mary-blue); }
-        .blog-date { font-size: 0.8rem; color: var(--gray-600); margin: 0.5rem 0; }
+    /* ── SECTIONS COMMON ─────────────────────── */
+    section { padding: 6rem 3rem; }
+    .section-label {
+      font-size: .7rem; letter-spacing: .25em; text-transform: uppercase;
+      color: var(--gold); font-weight: 500; margin-bottom: 1rem;
+      display: flex; align-items: center; gap: .6rem;
+    }
+    .section-label::before {
+      content: ''; width: 28px; height: 1.5px; background: var(--gold);
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      line-height: 1.15; font-weight: 700;
+      color: var(--dark); margin-bottom: 1rem;
+    }
+    .section-title em { font-style: italic; color: var(--wine); }
+    .section-sub {
+      color: var(--gray); font-size: 1rem; line-height: 1.8;
+      max-width: 520px;
+    }
 
-        /* Galería - SOLO TEXTO */
-        .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
-        .gallery-item { position: relative; border-radius: 16px; overflow: hidden; cursor: pointer; aspect-ratio: 1/1; background: linear-gradient(135deg, var(--gray-200), var(--gray-100)); display: flex; align-items: center; justify-content: center; transition: var(--transition); }
-        .gallery-item:hover { transform: scale(1.02); box-shadow: var(--shadow-md); }
-        .gallery-item span { color: var(--gray-600); font-weight: 500; }
-        .gallery-overlay { position: absolute; inset: 0; background: rgba(30, 58, 95, 0.85); display: flex; align-items: center; justify-content: center; opacity: 0; transition: var(--transition); }
-        .gallery-item:hover .gallery-overlay { opacity: 1; }
-        .gallery-overlay i { font-size: 2rem; color: var(--dehon-gold); }
+    /* ── COMUNIDAD ───────────────────────────── */
+    #comunidad { background: var(--white); }
+    .comunidad-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+    }
+    .comunidad-cards { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
+    .asesor-card {
+      display: flex; gap: 1.2rem; align-items: flex-start;
+      background: var(--cream); border-radius: 16px; padding: 1.5rem;
+      border: 1px solid var(--sand);
+      transition: box-shadow .25s, transform .25s;
+    }
+    .asesor-card:hover { box-shadow: 0 8px 32px rgba(123,26,42,.1); transform: translateY(-3px); }
+    .asesor-avatar {
+      width: 64px; height: 64px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--wine), var(--gold));
+      flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; font-weight: 700; color: var(--white);
+    }
+    .asesor-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; font-weight: 600; color: var(--dark);
+      margin-bottom: .2rem;
+    }
+    .asesor-role {
+      font-size: .78rem; color: var(--gold); letter-spacing: .08em;
+      text-transform: uppercase; margin-bottom: .5rem;
+    }
+    .asesor-desc { font-size: .88rem; color: var(--gray); line-height: 1.6; }
 
-        /* FAQ */
-        .faq-grid { max-width: 800px; margin: 0 auto; }
-        .faq-item { background: white; border-radius: 12px; margin-bottom: 1rem; overflow: hidden; }
-        .faq-question { padding: 1.2rem; background: white; cursor: pointer; display: flex; justify-content: space-between; align-items: center; font-weight: 600; }
-        .faq-question i { transition: var(--transition); }
-        .faq-answer { padding: 0 1.2rem; max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
-        .faq-item.active .faq-answer { padding: 0 1.2rem 1.2rem; max-height: 200px; }
-        .faq-item.active .faq-question i { transform: rotate(180deg); }
+    .valores-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem;
+      margin-top: 2rem;
+    }
+    .valor-card {
+      background: linear-gradient(135deg, var(--wine2), var(--wine));
+      border-radius: 16px; padding: 1.8rem 1.4rem;
+      text-align: center; color: var(--white);
+      position: relative; overflow: hidden;
+      transition: transform .25s;
+    }
+    .valor-card:hover { transform: scale(1.03); }
+    .valor-card::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(circle at 70% 20%, rgba(201,151,58,.25), transparent 60%);
+    }
+    .valor-icon { font-size: 2rem; margin-bottom: .8rem; position: relative; }
+    .valor-word {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem; font-weight: 700; margin-bottom: .3rem; position: relative;
+    }
+    .valor-label { font-size: .78rem; color: rgba(255,255,255,.65); letter-spacing: .1em; text-transform: uppercase; position: relative; }
 
-        /* Contacto */
-        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
-        .contact-info { background: var(--mary-blue); padding: 2rem; border-radius: 24px; color: white; }
-        .contact-detail { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
-        .contact-detail i { width: 40px; height: 40px; background: rgba(255,255,255,0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-        .contact-form { background: white; padding: 2rem; border-radius: 24px; box-shadow: var(--shadow-md); }
-        .form-group { margin-bottom: 1rem; }
-        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 0.8rem; border: 1px solid var(--gray-200); border-radius: 12px; font-family: inherit; }
-        .form-group input:focus, .form-group textarea:focus { outline: none; border-color: var(--dehon-gold); }
-        .map-container { margin-top: 2rem; border-radius: 20px; overflow: hidden; }
+    .comunidad-text .section-desc {
+      color: var(--gray); line-height: 1.9; font-size: .95rem; margin: 1.5rem 0;
+    }
+    .info-pills { display: flex; flex-direction: column; gap: .7rem; }
+    .info-pill {
+      display: flex; align-items: center; gap: .8rem;
+      background: var(--cream); border-radius: 10px; padding: .75rem 1rem;
+      border-left: 3px solid var(--gold);
+      font-size: .9rem;
+    }
+    .info-pill-icon { font-size: 1.1rem; }
+    .info-pill strong { color: var(--wine); }
 
-        /* Footer */
-        .footer { background: var(--mary-blue); color: white; padding: 4rem 0 2rem; }
-        .footer-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-bottom: 3rem; }
-        .footer-col h4 { color: var(--dehon-gold); margin-bottom: 1rem; }
-        .footer-col ul { list-style: none; }
-        .footer-col ul li { margin-bottom: 0.75rem; }
-        .footer-col ul li a { color: rgba(255,255,255,0.7); text-decoration: none; transition: var(--transition); }
-        .footer-col ul li a:hover { color: var(--dehon-gold); }
-        .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); }
-        .developer-credit { margin-top: 1rem; font-size: 0.8rem; opacity: 0.7; }
-        .developer-credit a { color: var(--dehon-gold); text-decoration: none; transition: var(--transition); }
-        .developer-credit a:hover { opacity: 1; text-decoration: underline; }
+    /* ── EVENTOS ─────────────────────────────── */
+    #eventos { background: var(--cream); }
+    .eventos-inner { max-width: 1100px; margin: 0 auto; }
+    .eventos-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; }
+    .eventos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.4rem; }
+    .evento-card {
+      background: var(--white); border-radius: 18px; overflow: hidden;
+      border: 1px solid var(--sand);
+      transition: box-shadow .25s, transform .25s;
+      display: flex; flex-direction: column;
+    }
+    .evento-card:hover { box-shadow: 0 12px 40px rgba(123,26,42,.1); transform: translateY(-4px); }
+    .evento-date-bar {
+      background: linear-gradient(135deg, var(--wine2), var(--wine));
+      color: var(--white); text-align: center; padding: 1.2rem;
+    }
+    .evento-day { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 800; line-height: 1; }
+    .evento-month { font-size: .72rem; letter-spacing: .2em; text-transform: uppercase; color: var(--gold2); }
+    .evento-body { padding: 1.4rem; flex: 1; }
+    .evento-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; font-weight: 600; color: var(--dark);
+      margin-bottom: .5rem;
+    }
+    .evento-desc { font-size: .85rem; color: var(--gray); line-height: 1.6; margin-bottom: .8rem; }
+    .evento-meta { font-size: .77rem; color: var(--gold); font-weight: 500; display: flex; align-items: center; gap: .4rem; }
 
-        @media (max-width: 992px) {
-            .donations-grid, .blog-grid, .gallery-grid, .footer-grid, .contact-grid { grid-template-columns: repeat(2, 1fr); }
-            .team-grid { grid-template-columns: 1fr; }
-        }
-        @media (max-width: 768px) {
-            .mobile-menu-btn { display: block; }
-            .nav-menu { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--mary-blue); flex-direction: column; padding: 2rem; gap: 1rem; text-align: center; }
-            .nav-menu.active { display: flex; }
-            .hero h1 { font-size: 2.2rem; }
-            .hero-meaning { font-size: 1.4rem; }
-            .donations-grid, .blog-grid, .gallery-grid, .footer-grid, .contact-grid { grid-template-columns: 1fr; }
-            .section-title { font-size: 2rem; }
-            .bank-detail { flex-direction: column; align-items: flex-start; }
-        }
-    </style>
+    /* ── DONACIONES ──────────────────────────── */
+    #donaciones {
+      background: linear-gradient(135deg, var(--wine2), var(--wine));
+      color: var(--white); position: relative; overflow: hidden;
+    }
+    #donaciones::before {
+      content: ''; position: absolute; inset: 0;
+      background-image: radial-gradient(rgba(255,255,255,.06) 1px, transparent 1px);
+      background-size: 36px 36px;
+    }
+    .donaciones-inner {
+      max-width: 1000px; margin: 0 auto; position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1.2fr 1fr; gap: 4rem; align-items: center;
+    }
+    #donaciones .section-label { color: var(--gold2); }
+    #donaciones .section-label::before { background: var(--gold2); }
+    #donaciones .section-title { color: var(--white); }
+    #donaciones .section-title em { color: var(--gold2); }
+    #donaciones .section-sub { color: rgba(255,255,255,.7); max-width: 100%; }
+    .don-amounts {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: .8rem;
+      margin: 1.8rem 0;
+    }
+    .don-btn {
+      background: rgba(255,255,255,.12); border: 1.5px solid rgba(255,255,255,.25);
+      color: var(--white); border-radius: 10px; padding: .75rem .5rem;
+      text-align: center; cursor: pointer; transition: .2s;
+      font-size: .9rem; font-weight: 500;
+    }
+    .don-btn:hover, .don-btn.active {
+      background: var(--gold); border-color: var(--gold); color: var(--dark);
+    }
+    .don-input-row {
+      display: flex; gap: .8rem; margin-bottom: 1rem;
+    }
+    .don-input {
+      flex: 1; background: rgba(255,255,255,.1); border: 1.5px solid rgba(255,255,255,.2);
+      color: var(--white); border-radius: 10px; padding: .75rem 1rem;
+      font-size: 1rem; font-family: inherit;
+      outline: none; transition: border .2s;
+    }
+    .don-input::placeholder { color: rgba(255,255,255,.4); }
+    .don-input:focus { border-color: var(--gold2); }
+    .don-card {
+      background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15);
+      border-radius: 18px; padding: 2rem; backdrop-filter: blur(8px);
+    }
+    .don-card-title {
+      font-family: 'Playfair Display', serif; font-size: 1.15rem;
+      color: var(--gold2); margin-bottom: 1.2rem;
+    }
+    .don-row {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: .7rem 0; border-bottom: 1px solid rgba(255,255,255,.1);
+      font-size: .88rem;
+    }
+    .don-row:last-child { border: none; }
+    .don-row-label { color: rgba(255,255,255,.6); }
+    .don-row-val { color: var(--white); font-weight: 500; }
+    .don-badge {
+      display: inline-block; background: rgba(201,151,58,.25);
+      border: 1px solid rgba(201,151,58,.5); color: var(--gold2);
+      font-size: .72rem; letter-spacing: .1em; padding: .3rem .8rem;
+      border-radius: 40px; text-transform: uppercase; margin-bottom: 1rem;
+    }
+
+    /* ── BLOG ────────────────────────────────── */
+    #blog { background: var(--white); }
+    .blog-inner { max-width: 1100px; margin: 0 auto; }
+    .blog-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 1.4rem; margin-top: 2.5rem; }
+    .blog-card {
+      border-radius: 18px; overflow: hidden;
+      background: var(--cream); border: 1px solid var(--sand);
+      transition: box-shadow .25s, transform .25s;
+    }
+    .blog-card:hover { box-shadow: 0 12px 40px rgba(0,0,0,.08); transform: translateY(-4px); }
+    .blog-img {
+      height: 220px; display: flex; align-items: center; justify-content: center;
+      font-size: 3rem; position: relative; overflow: hidden;
+    }
+    .blog-card:first-child .blog-img { height: 280px; }
+    .blog-img-1 { background: linear-gradient(135deg, #7B1A2A, #C9973A); }
+    .blog-img-2 { background: linear-gradient(135deg, #1A5276, #2E86C1); }
+    .blog-img-3 { background: linear-gradient(135deg, #1E8449, #52BE80); }
+    .blog-body { padding: 1.5rem; }
+    .blog-cat {
+      font-size: .7rem; letter-spacing: .15em; text-transform: uppercase;
+      color: var(--gold); font-weight: 600; margin-bottom: .5rem;
+    }
+    .blog-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.05rem; font-weight: 600; color: var(--dark);
+      line-height: 1.35; margin-bottom: .5rem;
+    }
+    .blog-card:first-child .blog-title { font-size: 1.3rem; }
+    .blog-date { font-size: .78rem; color: var(--gray); }
+    .blog-link {
+      display: inline-block; margin-top: .8rem;
+      color: var(--wine); font-size: .82rem; font-weight: 500;
+      text-decoration: none;
+      transition: gap .2s;
+    }
+    .blog-link:hover { text-decoration: underline; }
+
+    /* ── GALERÍA ─────────────────────────────── */
+    #galeria { background: var(--cream); }
+    .galeria-inner { max-width: 1100px; margin: 0 auto; }
+    .galeria-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 200px 200px;
+      gap: 1rem; margin-top: 2.5rem;
+    }
+    .gal-item {
+      border-radius: 14px; overflow: hidden; display: flex;
+      align-items: center; justify-content: center;
+      font-size: 2.5rem; font-weight: 700;
+      color: rgba(255,255,255,.5);
+      cursor: pointer; position: relative;
+      transition: transform .3s, filter .3s;
+    }
+    .gal-item:hover { transform: scale(1.03); filter: brightness(1.1); }
+    .gal-item:nth-child(1) { grid-column: span 2; background: linear-gradient(135deg, #7B1A2A, #A52840); }
+    .gal-item:nth-child(2) { background: linear-gradient(135deg, #4A1942, #7B2D7A); }
+    .gal-item:nth-child(3) { background: linear-gradient(135deg, #1A3A5C, #2E6DA4); }
+    .gal-item:nth-child(4) { background: linear-gradient(135deg, #2E7D32, #4CAF50); }
+    .gal-item:nth-child(5) { background: linear-gradient(135deg, #C9973A, #E8B85A); }
+    .gal-item:nth-child(6) { grid-column: span 2; background: linear-gradient(135deg, #5C1020, #7B1A2A); }
+    .gal-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: .8rem 1rem;
+      background: linear-gradient(transparent, rgba(0,0,0,.5));
+      color: var(--white); font-size: .8rem; text-align: center;
+      font-family: 'DM Sans', sans-serif; font-weight: 400;
+    }
+
+    /* ── FAQ ─────────────────────────────────── */
+    #faq { background: var(--white); }
+    .faq-inner {
+      max-width: 800px; margin: 0 auto;
+    }
+    .faq-head { text-align: center; margin-bottom: 3rem; }
+    .faq-head .section-label { justify-content: center; }
+    .faq-head .section-label::before { display: none; }
+    .faq-item {
+      border-bottom: 1px solid var(--sand);
+    }
+    .faq-q {
+      width: 100%; background: none; border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.3rem 0; font-family: 'DM Sans', sans-serif;
+      font-size: 1rem; font-weight: 500; color: var(--dark); text-align: left;
+      transition: color .2s;
+    }
+    .faq-q:hover { color: var(--wine); }
+    .faq-icon {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: var(--sand); flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; color: var(--wine);
+      transition: background .2s, transform .3s;
+    }
+    .faq-item.open .faq-icon { background: var(--wine); color: var(--white); transform: rotate(45deg); }
+    .faq-a {
+      font-size: .92rem; color: var(--gray); line-height: 1.8;
+      max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .3s;
+    }
+    .faq-item.open .faq-a { max-height: 200px; padding-bottom: 1.2rem; }
+
+    /* ── CONTACTO ────────────────────────────── */
+    #contacto { background: var(--cream); }
+    .contacto-inner {
+      max-width: 1000px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1.4fr; gap: 4rem; align-items: start;
+    }
+    .contacto-info { display: flex; flex-direction: column; gap: 1.5rem; margin-top: 2rem; }
+    .c-info-item {
+      display: flex; gap: 1rem; align-items: flex-start;
+    }
+    .c-info-icon {
+      width: 42px; height: 42px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--wine2), var(--wine));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    .c-info-label { font-size: .75rem; letter-spacing: .1em; text-transform: uppercase; color: var(--gold); margin-bottom: .2rem; }
+    .c-info-val { font-size: .95rem; color: var(--dark); line-height: 1.5; }
+
+    .contacto-form { background: var(--white); border-radius: 20px; padding: 2.5rem; border: 1px solid var(--sand); }
+    .form-title {
+      font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 600;
+      color: var(--dark); margin-bottom: 1.5rem;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-group { margin-bottom: 1rem; }
+    .form-group label {
+      display: block; font-size: .78rem; font-weight: 500;
+      letter-spacing: .06em; text-transform: uppercase;
+      color: var(--gray); margin-bottom: .4rem;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%; border: 1.5px solid var(--sand); border-radius: 10px;
+      padding: .75rem 1rem; font-family: inherit; font-size: .95rem;
+      color: var(--dark); background: var(--cream);
+      transition: border .2s; outline: none;
+    }
+    .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+      border-color: var(--wine);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .btn-wine {
+      background: var(--wine); color: var(--white);
+      box-shadow: 0 6px 20px rgba(123,26,42,.3);
+      width: 100%; justify-content: center;
+      font-size: .9rem;
+    }
+    .btn-wine:hover { background: var(--wine2); box-shadow: 0 10px 28px rgba(123,26,42,.4); }
+
+    /* ── FOOTER ──────────────────────────────── */
+    footer {
+      background: var(--dark); color: rgba(255,255,255,.6);
+      padding: 4rem 3rem 2rem;
+    }
+    .footer-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
+      padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .footer-brand .nav-logo { font-size: 1.6rem; margin-bottom: 1rem; display: block; }
+    .footer-brand p { font-size: .88rem; line-height: 1.7; }
+    .footer-col h4 {
+      font-size: .75rem; letter-spacing: .18em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.2rem;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: .6rem; }
+    .footer-col a { color: rgba(255,255,255,.55); text-decoration: none; font-size: .88rem; transition: color .2s; }
+    .footer-col a:hover { color: var(--gold2); }
+    .footer-bottom {
+      max-width: 1100px; margin: 2rem auto 0;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: .8rem; flex-wrap: wrap; gap: 1rem;
+    }
+    .footer-credit a { color: var(--gold2); text-decoration: none; }
+
+    /* ── MOBILE ──────────────────────────────── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0;
+        background: var(--cream); flex-direction: column; padding: 1.5rem;
+        border-bottom: 1px solid var(--sand); gap: 1.2rem;
+      }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+
+      section { padding: 4rem 1.5rem; }
+      .hero-content { padding: 6rem 1.5rem 3rem; }
+      .hero-cross { display: none; }
+
+      .comunidad-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .valores-grid { grid-template-columns: repeat(3, 1fr); }
+      .blog-grid { grid-template-columns: 1fr; }
+      .donaciones-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .contacto-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-inner { grid-template-columns: 1fr 1fr; }
+      .galeria-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .gal-item:nth-child(1), .gal-item:nth-child(6) { grid-column: span 2; }
+      .form-row { grid-template-columns: 1fr; }
+      .don-amounts { grid-template-columns: repeat(3, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .hero-pillars { flex-wrap: wrap; }
+      .valores-grid { grid-template-columns: 1fr; }
+      .footer-inner { grid-template-columns: 1fr; }
+      .eventos-head { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    }
+  </style>
 </head>
 <body>
-    <header class="header" id="header">
-        <div class="header-container">
-            <div class="logo">
-                <h1>Instituto Sagrado Corazón</h1>
-                <p>Dehonianos · Comunidad VAS</p>
-            </div>
-            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
-            <ul class="nav-menu" id="navMenu">
-                <li><a href="#home" class="nav-link">Inicio</a></li>
-                <li><a href="#comunidad" class="nav-link">Comunidad</a></li>
-                <li><a href="#donaciones" class="nav-link">Donaciones</a></li>
-                <li><a href="#eventos" class="nav-link">Eventos</a></li>
-                <li><a href="#blog" class="nav-link">Noticias</a></li>
-                <li><a href="#galeria" class="nav-link">Galería</a></li>
-                <li><a href="#contacto" class="nav-link">Contacto</a></li>
-            </ul>
+
+<!-- ── NAV ─────────────────────────────────────────── -->
+<nav id="navbar">
+  <a href="#home" class="nav-logo">VAS<span>·</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#comunidad">Comunidad</a></li>
+    <li><a href="#eventos">Eventos</a></li>
+    <li><a href="#blog">Noticias</a></li>
+    <li><a href="#galeria">Galería</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="#donaciones" class="nav-cta">Donar</a></li>
+  </ul>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────────── -->
+<section id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-pattern"></div>
+  <div class="hero-cross">✝</div>
+  <div class="hero-content">
+    <div class="hero-badge">Instituto Sagrado Corazón · Dehonianos</div>
+    <p class="hero-subtitle">Comunidad VAS</p>
+    <h1 class="hero-title">Ver · Amar<em>y Servir</em></h1>
+    <div class="hero-pillars">
+      <span class="hero-pill">🙏 Oración</span>
+      <span class="hero-pill">🎵 Música</span>
+      <span class="hero-pill">❤️ Servicio</span>
+      <span class="hero-pill">✨ Fraternidad</span>
+    </div>
+    <p class="hero-desc">Jóvenes de 1° a IV° medio que comparten la vida y la fe con sus pares y con quienes más lo necesitan, a través de la oración, la formación y el servicio.</p>
+    <div class="hero-actions">
+      <a href="#comunidad" class="btn btn-primary">Conoce más</a>
+      <a href="#donaciones" class="btn btn-outline">Apóyanos</a>
+    </div>
+  </div>
+  <div class="hero-schedule">
+    <div class="hero-dot"></div>
+    Todos los lunes · <strong>15:00 a 16:30 hrs</strong> · Sala Pastoral
+  </div>
+</section>
+
+<!-- ── COMUNIDAD ─────────────────────────────────────── -->
+<section id="comunidad">
+  <div class="comunidad-inner">
+    <div class="comunidad-text">
+      <p class="section-label">Nuestra comunidad</p>
+      <h2 class="section-title">Guiados por el carisma<em>dehoniano</em></h2>
+      <p class="section-desc">VAS es un espacio de encuentro, crecimiento y servicio para jóvenes que quieren vivir su fe de manera auténtica y comprometida con quienes más lo necesitan.</p>
+      <div class="info-pills">
+        <div class="info-pill"><span class="info-pill-icon">📅</span><div>Reuniones: <strong>Todos los lunes</strong> · 15:00 a 16:30 hrs</div></div>
+        <div class="info-pill"><span class="info-pill-icon">📍</span><div>Lugar: <strong>Sala Pastoral</strong> · Instituto Sagrado Corazón</div></div>
+        <div class="info-pill"><span class="info-pill-icon">🎓</span><div>Para: <strong>1° a IV° Medio</strong></div></div>
+        <div class="info-pill"><span class="info-pill-icon">👩‍🏫</span><div>Inscripción: <strong>Profesora Constanza Espinoza</strong></div></div>
+      </div>
+      <div class="valores-grid" style="margin-top:2rem;">
+        <div class="valor-card">
+          <div class="valor-icon">👁️</div>
+          <div class="valor-word">Ver</div>
+          <div class="valor-label">Contemplar</div>
         </div>
-    </header>
-
-    <div class="floating-donate" onclick="document.getElementById('donaciones').scrollIntoView({behavior: 'smooth'})">
-        <i class="fas fa-hand-holding-heart"></i>
-    </div>
-    <div class="floating-wa" onclick="window.open('https://wa.me/56912345678?text=Hola%2C%20quiero%20más%20información%20sobre%20la%20comunidad%20VAS','_blank')">
-        <i class="fab fa-whatsapp"></i>
-    </div>
-
-    <main>
-        <section id="home" class="hero">
-            <div class="hero-content">
-                <div class="hero-logo">INSTITUTO SAGRADO CORAZÓN · DEHONIANOS</div>
-                <h1>COMUNIDAD <span style="color: var(--dehon-gold);">VAS</span></h1>
-                <div class="hero-meaning">Ver · Amar · Servir</div>
-                <p class="hero-description">Jóvenes de enseñanza media (1° a IV° medio) que quieran compartir la vida y la fe con sus pares y con quienes más lo necesitan, por medio de la oración, la música, la formación, el compartir fraterno, obras sociales, la entretención, dinámicas y mucho más.</p>
-                <div class="hero-schedule"><i class="fas fa-calendar-alt"></i> Todos los lunes de 15:00 a 16:30 hrs</div>
-                <div class="hero-contact"><i class="fas fa-map-marker-alt"></i> Sala Pastoral · Profesora Constanza Espinoza</div>
-                <div class="hero-buttons" style="margin-top: 2rem;">
-                    <a href="#comunidad" class="btn btn-primary">Conoce más <i class="fas fa-arrow-right"></i></a>
-                    <a href="#donaciones" class="btn btn-outline">Apóyanos <i class="fas fa-heart"></i></a>
-                </div>
-            </div>
-        </section>
-
-        <section id="comunidad" class="section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-tag">Nuestra Comunidad</span>
-                    <h2 class="section-title">Asesores VAS 2026</h2>
-                    <p class="section-subtitle">Guiados por el carisma dehoniano, acompañamos a los jóvenes en su camino de fe y servicio</p>
-                </div>
-                <div class="team-grid">
-                    <div class="team-card">
-                        <div class="team-img-placeholder">
-                            <i class="fas fa-cross" style="font-size: 3rem; opacity: 0.5;"></i>
-                        </div>
-                        <div class="team-info">
-                            <h3>Padre Tomás Cerda SCJ</h3>
-                            <p class="role">Asesor Espiritual · Congregación Dehoniana</p>
-                            <p>Acompañamiento espiritual, dirección de retiros y celebración de la Eucaristía.</p>
-                        </div>
-                    </div>
-                    <div class="team-card">
-                        <div class="team-img-placeholder">
-                            <i class="fas fa-church" style="font-size: 3rem; opacity: 0.5;"></i>
-                        </div>
-                        <div class="team-info">
-                            <h3>Profesora Constanza Espinoza</h3>
-                            <p class="role">Coordinadora VAS · Sala Pastoral</p>
-                            <p>Organización de encuentros, formación de líderes juveniles y proyectos solidarios.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="donaciones" class="donations-section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-tag">Apóyanos</span>
-                    <h2 class="section-title" style="color: var(--dehon-gold);">Haz tu donación</h2>
-                    <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Tu generosidad nos permite seguir ayudando a quienes más lo necesitan</p>
-                </div>
-                <div class="donations-grid">
-                    <div class="donation-card">
-                        <h3 style="text-align: center;"><i class="fas fa-hand-holding-heart"></i> Ingresa el monto</h3>
-                        <div style="justify-content: center;">
-                            <input type="number" id="customAmount" placeholder="Ej: 15000" style="width: 100%; padding: 1rem; border-radius: 50px; border: none; margin: 1rem 0; font-size: 1.1rem; text-align: center;" step="1000">
-                        </div>
-                        <button class="btn btn-primary" id="donateBtn" style="width: 100%; justify-content: center;"><i class="fas fa-credit-card"></i> Donar ahora</button>
-                        <div class="optional-message">
-                            <i class="fas fa-heart" style="color: var(--dehon-gold); margin-right: 0.5rem;"></i>
-                            Tu donación es completamente <strong>voluntaria y opcional</strong>. Si decides ayudarnos, 
-                            <strong>llevas nuestra comunidad a más personas</strong> que necesitan de nuestro servicio y amor. 
-                            ¡Gracias por ser parte de esta misión!
-                        </div>
-                    </div>
-                    <div class="donation-card">
-                        <h3 style="text-align: center;"><i class="fas fa-university"></i> Transferencia bancaria</h3>
-                        <div class="bank-info">
-                            <div class="fake-data-warning">
-                                <i class="fas fa-exclamation-triangle"></i> <strong>⚠️ DATOS FALSOS ⚠️</strong><br>
-                                La cuenta bancaria oficial está en proceso de apertura. Estos datos son solo de muestra. 
-                                ¡Pronto podrás donar de forma oficial! Muchas gracias por tu paciencia y generosidad.
-                            </div>
-                            <h4>📋 Datos de prueba (no usar)</h4>
-                            <div class="bank-detail"><strong>Banco:</strong> Banco de Prueba <button class="copy-btn" data-copy="Banco de Prueba"><i class="fas fa-copy"></i> Copiar</button></div>
-                            <div class="bank-detail"><strong>Tipo de cuenta:</strong> Cuenta de Muestra <button class="copy-btn" data-copy="Cuenta de Muestra"><i class="fas fa-copy"></i> Copiar</button></div>
-                            <div class="bank-detail"><strong>Titular:</strong> Cuenta en Proceso <button class="copy-btn" data-copy="Cuenta en Proceso"><i class="fas fa-copy"></i> Copiar</button></div>
-                            <div class="bank-detail"><strong>RUT:</strong> 11.111.111-1 <button class="copy-btn" data-copy="11.111.111-1"><i class="fas fa-copy"></i> Copiar</button></div>
-                            <div class="bank-detail"><strong>N° Cuenta:</strong> 0000-0000-00 <button class="copy-btn" data-copy="0000-0000-00"><i class="fas fa-copy"></i> Copiar</button></div>
-                            <div class="bank-detail"><strong>Email:</strong> cuenta@enproceso.cl <button class="copy-btn" data-copy="cuenta@enproceso.cl"><i class="fas fa-copy"></i> Copiar</button></div>
-                            <p style="margin-top: 1rem; font-size: 0.8rem; text-align: center; background: #fff3cd; padding: 0.5rem; border-radius: 10px;">
-                                <i class="fas fa-hourglass-half"></i> La cuenta oficial está en proceso de apertura. 
-                                Muy pronto podrás donar de forma segura. ¡Gracias por tu comprensión!
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="eventos" class="section-light">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-tag">Próximas actividades</span>
-                    <h2 class="section-title">Calendario VAS</h2>
-                    <p class="section-subtitle">Encuentros, retiros y jornadas solidarias</p>
-                </div>
-                <div class="calendar-grid">
-                    <div class="calendar-item">
-                        <div class="calendar-date"><div class="day">05</div><div class="month">Mayo</div></div>
-                        <div class="calendar-info"><h4>Inicio Taller VAS</h4><p>Primer encuentro del mes. Bienvenida a nuevos integrantes.</p><small><i class="fas fa-clock"></i> 15:00-16:30 | Sala Pastoral</small></div>
-                    </div>
-                    <div class="calendar-item">
-                        <div class="calendar-date"><div class="day">12</div><div class="month">Mayo</div></div>
-                        <div class="calendar-info"><h4>Taller: Ver con el Corazón</h4><p>Reflexión sobre el primer pilar: aprender a mirar como Jesús.</p><small><i class="fas fa-clock"></i> 15:00-16:30 | Sala Pastoral</small></div>
-                    </div>
-                    <div class="calendar-item">
-                        <div class="calendar-date"><div class="day">19</div><div class="month">Mayo</div></div>
-                        <div class="calendar-info"><h4>Jornada Solidaria</h4><p>Visita a hogar de ancianos y jornada de servicio.</p><small><i class="fas fa-clock"></i> 09:00-13:00 | Salida desde el colegio</small></div>
-                    </div>
-                    <div class="calendar-item">
-                        <div class="calendar-date"><div class="day">26</div><div class="month">Mayo</div></div>
-                        <div class="calendar-info"><h4>Convivencia Fraterna</h4><p>Encuentro de integración y celebración comunitaria.</p><small><i class="fas fa-clock"></i> 15:00-18:00 | Capilla del colegio</small></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="blog" class="section-maroon">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-tag">Noticias y reflexiones</span>
-                    <h2 class="section-title">Últimas publicaciones</h2>
-                    <p class="section-subtitle" style="color: rgba(255,255,255,0.8);">Información y novedades de nuestra comunidad</p>
-                </div>
-                <div class="blog-grid">
-                    <div class="blog-card">
-                        <div class="blog-img-placeholder">📸 Imagen 1</div>
-                        <div class="blog-content"><span class="blog-category">Espiritualidad</span><h3>Retiro de Cuaresma 2026</h3><p>Más de 50 jóvenes participaron en el retiro de Cuaresma, un espacio de reflexión y encuentro con Dios.</p><div class="blog-date"><i class="far fa-calendar-alt"></i> 10 de abril, 2026</div><a href="#" onclick="return false" style="color: var(--dehon-gold); text-decoration: none;">Leer más →</a></div>
-                    </div>
-                    <div class="blog-card">
-                        <div class="blog-img-placeholder">📸 Imagen 2</div>
-                        <div class="blog-content"><span class="blog-category">Solidaridad</span><h3>Campaña de invierno 2026</h3><p>Recolectamos más de 500 prendas de abrigo para familias vulnerables de nuestra comuna.</p><div class="blog-date"><i class="far fa-calendar-alt"></i> 5 de abril, 2026</div><a href="#" onclick="return false" style="color: var(--dehon-gold); text-decoration: none;">Leer más →</a></div>
-                    </div>
-                    <div class="blog-card">
-                        <div class="blog-img-placeholder">📸 Imagen 3</div>
-                        <div class="blog-content"><span class="blog-category">Eventos</span><h3>Inicio del Taller VAS 2026</h3><p>Dimos la bienvenida a los nuevos integrantes de la comunidad con una jornada llena de alegría y fraternidad.</p><div class="blog-date"><i class="far fa-calendar-alt"></i> 28 de marzo, 2026</div><a href="#" onclick="return false" style="color: var(--dehon-gold); text-decoration: none;">Leer más →</a></div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="galeria" class="section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-tag">Memoria visual</span>
-                    <h2 class="section-title">Galería fotográfica</h2>
-                    <p class="section-subtitle">Momentos que reflejan el espíritu de nuestra comunidad</p>
-                </div>
-                <div class="gallery-grid">
-                    <div class="gallery-item"><span>📸 Imagen 1</span><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
-                    <div class="gallery-item"><span>📸 Imagen 2</span><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
-                    <div class="gallery-item"><span>📸 Imagen 3</span><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
-                    <div class="gallery-item"><span>📸 Imagen 4</span><div class="gallery-overlay"><i class="fas fa-search-plus"></i></div></div>
-                </div>
-            </div>
-        </section>
-
-        <section class="section-light">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-tag">Preguntas frecuentes</span>
-                    <h2 class="section-title">Resolvemos tus dudas</h2>
-                </div>
-                <div class="faq-grid">
-                    <div class="faq-item"><div class="faq-question">¿Quiénes pueden participar en VAS? <i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Jóvenes de 1° a IV° medio del Instituto Sagrado Corazón que quieran compartir la vida y la fe con sus pares y con quienes más lo necesitan.</p></div></div>
-                    <div class="faq-item"><div class="faq-question">¿Cuándo y dónde nos reunimos? <i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Todos los lunes de 15:00 a 16:30 hrs en la Sala Pastoral del colegio.</p></div></div>
-                    <div class="faq-item"><div class="faq-question">¿Cómo puedo inscribirme? <i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Debes inscribirte con la Profesora Constanza Espinoza en la Sala Pastoral.</p></div></div>
-                    <div class="faq-item"><div class="faq-question">¿Cómo puedo hacer una donación? <i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Actualmente la cuenta bancaria oficial está en proceso de apertura. Pronto tendrás disponible un medio seguro para donar. ¡Gracias por tu paciencia!</p></div></div>
-                    <div class="faq-item"><div class="faq-question">¿Qué actividades realizamos? <i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>Oración, música, formación, compartir fraterno, obras sociales, entretención, dinámicas y mucho más.</p></div></div>
-                    <div class="faq-item"><div class="faq-question">¿Quiénes son los asesores? <i class="fas fa-chevron-down"></i></div><div class="faq-answer"><p>El Padre Tomás Cerda SCJ como asesor espiritual y la Profesora Constanza Espinoza como coordinadora.</p></div></div>
-                </div>
-            </div>
-        </section>
-
-        <section id="contacto" class="section">
-            <div class="container">
-                <div class="section-header">
-                    <span class="section-tag">Comunícate con nosotros</span>
-                    <h2 class="section-title">Contáctanos</h2>
-                </div>
-                <div class="contact-grid">
-                    <div class="contact-info">
-                        <h3>Oficina VAS</h3>
-                        <p style="margin-bottom: 1.5rem;">Sala Pastoral - Instituto Sagrado Corazón</p>
-                        <div class="contact-detail"><i class="fas fa-map-marker-alt"></i> Av. José Joaquín Pérez 1230, San Bernardo, Chile</div>
-                        <div class="contact-detail"><i class="fas fa-phone"></i> +56 2 1234 5678</div>
-                        <div class="contact-detail"><i class="fas fa-envelope"></i> vas@dehonianos.cl</div>
-                        <div class="contact-detail"><i class="fas fa-clock"></i> Horario: Lunes 15:00-16:30</div>
-                        <div class="social-links" style="display: flex; gap: 1rem; margin-top: 1rem;">
-                            <a href="#" style="color: white;"><i class="fab fa-instagram fa-lg"></i></a>
-                            <a href="#" style="color: white;"><i class="fab fa-facebook fa-lg"></i></a>
-                            <a href="#" style="color: white;"><i class="fab fa-youtube fa-lg"></i></a>
-                        </div>
-                    </div>
-                    <div class="contact-form">
-                        <form id="contactForm">
-                            <div class="form-group"><input type="text" placeholder="Nombre completo" required></div>
-                            <div class="form-group"><input type="email" placeholder="Correo electrónico" required></div>
-                            <div class="form-group"><input type="tel" placeholder="Teléfono"></div>
-                            <div class="form-group"><select><option>Quiero ser voluntario</option><option>Quiero hacer una donación</option><option>Más información sobre VAS</option><option>Otra consulta</option></select></div>
-                            <div class="form-group"><textarea rows="3" placeholder="Tu mensaje..."></textarea></div>
-                            <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Enviar mensaje <i class="fas fa-paper-plane"></i></button>
-                        </form>
-                    </div>
-                </div>
-                <div class="map-container">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3326.5!2d-70.705!3d-33.592!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9662e1b8b5e7b8b1%3A0x7b5b5b5b5b5b5b5b!2sInstituto%20Sagrado%20Coraz%C3%B3n%20San%20Bernardo!5e0!3m2!1ses!2scl!4v1700000000000" width="100%" height="300" style="border:0; border-radius: 20px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-col">
-                    <h4>VAS Comunidad</h4>
-                    <p>Ver, Amar y Servir</p>
-                    <div class="vas-symbol" style="margin-top: 1rem; background: rgba(255,255,255,0.1);">
-                        <i class="fas fa-eye"></i>
-                        <i class="fas fa-heart"></i>
-                        <i class="fas fa-hands-helping"></i>
-                        <span>VAS</span>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h4>Enlaces</h4>
-                    <ul>
-                        <li><a href="#home">Inicio</a></li>
-                        <li><a href="#comunidad">Comunidad</a></li>
-                        <li><a href="#donaciones">Donaciones</a></li>
-                        <li><a href="#eventos">Eventos</a></li>
-                        <li><a href="#blog">Noticias</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Horario</h4>
-                    <ul>
-                        <li><i class="fas fa-clock"></i> Lunes 15:00-16:30</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Sala Pastoral</li>
-                        <li><i class="fas fa-envelope"></i> vas@dehonianos.cl</li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Cuenta donaciones</h4>
-                    <ul>
-                        <li>⚠️ En proceso</li>
-                        <li>Pronto disponible</li>
-                        <li>¡Gracias!</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Instituto Sagrado Corazón - Comunidad Dehoniana VAS | Ver, Amar y Servir</p>
-                <p style="margin-top: 0.5rem;">Todos los lunes · 15:00 a 16:30 hrs · ¡Te esperamos!</p>
-                <div class="developer-credit">
-                    <i class="fab fa-instagram" style="margin-right: 0.3rem;"></i> Página web hecha 100% por <a href="https://instagram.com/ju4n_rpf.cll" target="_blank">@ju4n_rpf.cll</a>
-                </div>
-            </div>
+        <div class="valor-card">
+          <div class="valor-icon">❤️</div>
+          <div class="valor-word">Amar</div>
+          <div class="valor-label">Comprometer</div>
         </div>
-    </footer>
-
-    <div id="modal" class="modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 2000; justify-content: center; align-items: center;">
-        <span style="position: absolute; top: 2rem; right: 2rem; color: white; font-size: 2rem; cursor: pointer;" onclick="document.getElementById('modal').style.display='none'">&times;</span>
-        <img id="modal-img" src="" style="max-width: 90%; max-height: 90%; border-radius: 12px;">
+        <div class="valor-card">
+          <div class="valor-icon">🤝</div>
+          <div class="valor-word">Servir</div>
+          <div class="valor-label">Transformar</div>
+        </div>
+      </div>
     </div>
+    <div>
+      <p class="section-label">Asesores VAS 2026</p>
+      <h2 class="section-title" style="margin-bottom:1.5rem;">Quienes nos<em>acompañan</em></h2>
+      <div class="comunidad-cards">
+        <div class="asesor-card">
+          <div class="asesor-avatar">TC</div>
+          <div>
+            <div class="asesor-name">Padre Tomás Cerda SCJ</div>
+            <div class="asesor-role">Asesor Espiritual · Congregación Dehoniana</div>
+            <div class="asesor-desc">Acompañamiento espiritual, dirección de retiros y celebración de la Eucaristía.</div>
+          </div>
+        </div>
+        <div class="asesor-card">
+          <div class="asesor-avatar">CE</div>
+          <div>
+            <div class="asesor-name">Profesora Constanza Espinoza</div>
+            <div class="asesor-role">Coordinadora VAS · Sala Pastoral</div>
+            <div class="asesor-desc">Organización de encuentros, formación de líderes juveniles y proyectos solidarios.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <script>
-        // Header scroll
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 100));
+<!-- ── EVENTOS ─────────────────────────────────────── -->
+<section id="eventos">
+  <div class="eventos-inner">
+    <div class="eventos-head">
+      <div>
+        <p class="section-label">Próximas actividades</p>
+        <h2 class="section-title">Calendario <em>VAS</em></h2>
+      </div>
+    </div>
+    <div class="eventos-grid">
+      <div class="evento-card">
+        <div class="evento-date-bar">
+          <div class="evento-day">05</div>
+          <div class="evento-month">Mayo 2026</div>
+        </div>
+        <div class="evento-body">
+          <div class="evento-title">Inicio Taller VAS</div>
+          <div class="evento-desc">Primer encuentro del mes. Bienvenida a nuevos integrantes de la comunidad.</div>
+          <div class="evento-meta">🕒 15:00–16:30 · Sala Pastoral</div>
+        </div>
+      </div>
+      <div class="evento-card">
+        <div class="evento-date-bar">
+          <div class="evento-day">12</div>
+          <div class="evento-month">Mayo 2026</div>
+        </div>
+        <div class="evento-body">
+          <div class="evento-title">Taller: Ver con el Corazón</div>
+          <div class="evento-desc">Reflexión sobre el primer pilar: aprender a mirar como Jesús mira.</div>
+          <div class="evento-meta">🕒 15:00–16:30 · Sala Pastoral</div>
+        </div>
+      </div>
+      <div class="evento-card">
+        <div class="evento-date-bar">
+          <div class="evento-day">19</div>
+          <div class="evento-month">Mayo 2026</div>
+        </div>
+        <div class="evento-body">
+          <div class="evento-title">Jornada Solidaria</div>
+          <div class="evento-desc">Visita a hogar de ancianos y jornada de servicio comunitario.</div>
+          <div class="evento-meta">🕒 09:00–13:00 · Salida desde el colegio</div>
+        </div>
+      </div>
+      <div class="evento-card">
+        <div class="evento-date-bar">
+          <div class="evento-day">26</div>
+          <div class="evento-month">Mayo 2026</div>
+        </div>
+        <div class="evento-body">
+          <div class="evento-title">Convivencia Fraterna</div>
+          <div class="evento-desc">Encuentro de integración y celebración comunitaria en la capilla.</div>
+          <div class="evento-meta">🕒 15:00–18:00 · Capilla del colegio</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // Mobile menu
-        document.getElementById('mobileMenuBtn').addEventListener('click', () => document.getElementById('navMenu').classList.toggle('active'));
+<!-- ── DONACIONES ─────────────────────────────────── -->
+<section id="donaciones">
+  <div class="donaciones-inner">
+    <div>
+      <p class="section-label">Apóyanos</p>
+      <h2 class="section-title">Haz tu <em>donación</em></h2>
+      <p class="section-sub">Tu generosidad nos permite seguir ayudando a quienes más lo necesitan. Cada aporte lleva nuestra misión a más personas.</p>
+      <div class="don-amounts" style="margin-top:2rem;">
+        <div class="don-btn" onclick="setAmount(2000)">$2.000</div>
+        <div class="don-btn" onclick="setAmount(5000)">$5.000</div>
+        <div class="don-btn" onclick="setAmount(10000)">$10.000</div>
+        <div class="don-btn" onclick="setAmount(20000)">$20.000</div>
+        <div class="don-btn" onclick="setAmount(50000)">$50.000</div>
+        <div class="don-btn" id="otroBtn" onclick="focusCustom()">Otro</div>
+      </div>
+      <div class="don-input-row">
+        <input class="don-input" id="customAmount" type="number" placeholder="Monto personalizado (CLP)" />
+        <button class="btn btn-primary" onclick="alert('¡Gracias! La cuenta bancaria está próximamente disponible.')">Donar</button>
+      </div>
+      <p style="color:rgba(255,255,255,.5); font-size:.8rem;">Tu donación es completamente voluntaria y opcional. ¡Gracias por ser parte de esta misión!</p>
+    </div>
+    <div>
+      <div class="don-badge">⚠️ Cuenta en proceso de apertura</div>
+      <div class="don-card">
+        <div class="don-card-title">📋 Datos bancarios (próximamente)</div>
+        <div class="don-row"><span class="don-row-label">Banco</span><span class="don-row-val">Por confirmar</span></div>
+        <div class="don-row"><span class="don-row-label">Tipo de cuenta</span><span class="don-row-val">Por confirmar</span></div>
+        <div class="don-row"><span class="don-row-label">Titular</span><span class="don-row-val">Comunidad VAS</span></div>
+        <div class="don-row"><span class="don-row-label">RUT</span><span class="don-row-val">Por confirmar</span></div>
+        <div class="don-row"><span class="don-row-label">Email</span><span class="don-row-val">vas@dehonianos.cl</span></div>
+        <div style="margin-top:1.2rem; padding:.9rem; background:rgba(201,151,58,.1); border:1px solid rgba(201,151,58,.25); border-radius:10px; font-size:.84rem; color:rgba(255,255,255,.7);">
+          🙏 Muy pronto podrás donar de forma segura. ¡Gracias por tu paciencia y generosidad!
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // Smooth scroll
-        document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', function(e) {
-            e.preventDefault();
-            const t = document.querySelector(this.getAttribute('href'));
-            if(t) { document.getElementById('navMenu')?.classList.remove('active'); t.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
-        }));
+<!-- ── BLOG ──────────────────────────────────────── -->
+<section id="blog">
+  <div class="blog-inner">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;">
+      <div>
+        <p class="section-label">Noticias y reflexiones</p>
+        <h2 class="section-title">Últimas <em>publicaciones</em></h2>
+      </div>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-card">
+        <div class="blog-img blog-img-1">✝️</div>
+        <div class="blog-body">
+          <div class="blog-cat">Espiritualidad</div>
+          <div class="blog-title">Retiro de Cuaresma 2026: Encuentro profundo con Dios</div>
+          <div class="blog-date">10 de abril, 2026</div>
+          <a href="#" class="blog-link">Leer más →</a>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-img blog-img-2">🧥</div>
+        <div class="blog-body">
+          <div class="blog-cat">Solidaridad</div>
+          <div class="blog-title">Campaña de Invierno 2026</div>
+          <div class="blog-date">5 de abril, 2026</div>
+          <a href="#" class="blog-link">Leer más →</a>
+        </div>
+      </div>
+      <div class="blog-card">
+        <div class="blog-img blog-img-3">🎉</div>
+        <div class="blog-body">
+          <div class="blog-cat">Eventos</div>
+          <div class="blog-title">Inicio del Taller VAS 2026</div>
+          <div class="blog-date">28 de marzo, 2026</div>
+          <a href="#" class="blog-link">Leer más →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // Galería modal
-        const modal = document.getElementById('modal');
-        const modalImg = document.getElementById('modal-img');
-        document.querySelectorAll('.gallery-item').forEach(item => {
-            item.addEventListener('click', () => {
-                const text = item.querySelector('span')?.innerText || 'Imagen';
-                modalImg.src = `https://placehold.co/800x600/1E3A5F/C9A03D?text=${encodeURIComponent(text)}`;
-                modal.style.display = 'flex';
-                document.body.style.overflow = 'hidden';
-            });
-        });
+<!-- ── GALERÍA ─────────────────────────────────────── -->
+<section id="galeria">
+  <div class="galeria-inner">
+    <p class="section-label">Memoria visual</p>
+    <h2 class="section-title">Galería <em>fotográfica</em></h2>
+    <p class="section-sub">Momentos que reflejan el espíritu de nuestra comunidad.</p>
+    <div class="galeria-grid">
+      <div class="gal-item">📸<div class="gal-label">Retiro Cuaresma 2026</div></div>
+      <div class="gal-item">🕯️<div class="gal-label">Celebración Eucaristía</div></div>
+      <div class="gal-item">🤝<div class="gal-label">Jornada Solidaria</div></div>
+      <div class="gal-item">🎵<div class="gal-label">Taller de Música</div></div>
+      <div class="gal-item">🏕️<div class="gal-label">Convivencia fraterna</div></div>
+      <div class="gal-item">✨<div class="gal-label">Bienvenida VAS 2026</div></div>
+    </div>
+  </div>
+</section>
 
-        // Donaciones - Monto libre
-        const customAmount = document.getElementById('customAmount');
-        const donateBtn = document.getElementById('donateBtn');
+<!-- ── FAQ ────────────────────────────────────────── -->
+<section id="faq">
+  <div class="faq-inner">
+    <div class="faq-head">
+      <p class="section-label">Preguntas frecuentes</p>
+      <h2 class="section-title">Resolvemos <em>tus dudas</em></h2>
+    </div>
+    <div id="faqList">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Quiénes pueden participar en VAS?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Jóvenes de 1° a IV° medio del Instituto Sagrado Corazón que quieran compartir la vida y la fe con sus pares y con quienes más lo necesitan.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Cuándo y dónde nos reunimos?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Todos los lunes de 15:00 a 16:30 hrs en la Sala Pastoral del colegio, Av. José Joaquín Pérez 1230, San Bernardo.</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Cómo puedo inscribirme?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Debes inscribirte directamente con la Profesora Constanza Espinoza en la Sala Pastoral del colegio. ¡El cupo es abierto para todos los jóvenes del establecimiento!</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Cómo puedo hacer una donación?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Actualmente la cuenta bancaria oficial está en proceso de apertura. Muy pronto tendrás disponible un medio seguro para donar. ¡Gracias por tu paciencia y generosidad!</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Qué actividades realizamos?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">Oración, música, formación, compartir fraterno, obras sociales, retiros espirituales, visitas solidarias, entretención, dinámicas y mucho más. ¡Siempre hay algo nuevo!</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">
+          ¿Quiénes son los asesores?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a">El Padre Tomás Cerda SCJ como asesor espiritual de la Congregación Dehoniana, y la Profesora Constanza Espinoza como coordinadora de VAS.</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-        donateBtn?.addEventListener('click', () => {
-            let amount = parseInt(customAmount.value);
-            if (!amount || amount <= 0) {
-                alert('Por favor ingresa un monto válido (ejemplo: 15000)');
-                return;
-            }
-            alert(`⚠️ IMPORTANTE ⚠️\n\nLa cuenta bancaria oficial está en proceso de apertura. Por ahora no podemos recibir donaciones.\n\n¡Muy pronto podrás donar de forma segura!\n\nMuchas gracias por tu generosidad e interés en ayudar a nuestra comunidad VAS. ¡Dios te bendiga!`);
-            customAmount.value = '';
-        });
+<!-- ── CONTACTO ────────────────────────────────────── -->
+<section id="contacto">
+  <div class="contacto-inner">
+    <div>
+      <p class="section-label">Comunícate con nosotros</p>
+      <h2 class="section-title">Contáctanos <em>hoy</em></h2>
+      <p class="section-sub">¿Tienes preguntas sobre la comunidad? ¡Nos encantaría escucharte!</p>
+      <div class="contacto-info">
+        <div class="c-info-item">
+          <div class="c-info-icon">📍</div>
+          <div>
+            <div class="c-info-label">Dirección</div>
+            <div class="c-info-val">Sala Pastoral, Instituto Sagrado Corazón<br>Av. José Joaquín Pérez 1230, San Bernardo</div>
+          </div>
+        </div>
+        <div class="c-info-item">
+          <div class="c-info-icon">📧</div>
+          <div>
+            <div class="c-info-label">Correo</div>
+            <div class="c-info-val">vas@dehonianos.cl</div>
+          </div>
+        </div>
+        <div class="c-info-item">
+          <div class="c-info-icon">🕒</div>
+          <div>
+            <div class="c-info-label">Horario de reuniones</div>
+            <div class="c-info-val">Lunes · 15:00 a 16:30 hrs</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contacto-form">
+      <div class="form-title">Envíanos un mensaje</div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Nombre</label>
+          <input type="text" placeholder="Tu nombre" />
+        </div>
+        <div class="form-group">
+          <label>Correo</label>
+          <input type="email" placeholder="tu@correo.cl" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label>Asunto</label>
+        <select>
+          <option>Quiero ser voluntario</option>
+          <option>Quiero hacer una donación</option>
+          <option>Más información sobre VAS</option>
+          <option>Otra consulta</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Mensaje</label>
+        <textarea placeholder="Escribe tu mensaje aquí..."></textarea>
+      </div>
+      <button class="btn btn-wine" onclick="alert('¡Gracias por tu mensaje! Te responderemos pronto.')">Enviar mensaje</button>
+    </div>
+  </div>
+</section>
 
-        // Copiar datos bancarios (con advertencia)
-        document.querySelectorAll('.copy-btn').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const text = btn.dataset.copy;
-                navigator.clipboard.writeText(text);
-                const original = btn.innerHTML;
-                btn.innerHTML = '<i class="fas fa-check"></i> Copiado!';
-                setTimeout(() => btn.innerHTML = original, 1500);
-                alert('⚠️ Estos son DATOS DE PRUEBA. La cuenta oficial está en proceso de apertura.');
-            });
-        });
+<!-- ── FOOTER ──────────────────────────────────────── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <a href="#home" class="nav-logo">VAS<span>·</span></a>
+      <p>Ver, Amar y Servir. Comunidad juvenil del Instituto Sagrado Corazón Dehonianos en San Bernardo, Chile. Jóvenes comprometidos con la fe y el servicio.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navegación</h4>
+      <ul>
+        <li><a href="#home">Inicio</a></li>
+        <li><a href="#comunidad">Comunidad</a></li>
+        <li><a href="#eventos">Eventos</a></li>
+        <li><a href="#blog">Noticias</a></li>
+        <li><a href="#galeria">Galería</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Horario</h4>
+      <ul>
+        <li><a href="#">Lunes 15:00–16:30</a></li>
+        <li><a href="#">Sala Pastoral</a></li>
+        <li><a href="#">vas@dehonianos.cl</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Donaciones</h4>
+      <ul>
+        <li><a href="#donaciones">⚠️ En proceso</a></li>
+        <li><a href="#donaciones">Pronto disponible</a></li>
+        <li><a href="#contacto">Contactar</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Instituto Sagrado Corazón · Comunidad VAS · Ver, Amar y Servir</span>
+    <span class="footer-credit">Diseñado por <a href="https://instagram.com/ju4n_rpf.cll" target="_blank">@ju4n_rpf.cll</a></span>
+  </div>
+</footer>
 
-        // FAQ acordeón
-        document.querySelectorAll('.faq-question').forEach(q => {
-            q.addEventListener('click', () => { q.parentElement.classList.toggle('active'); });
-        });
+<script>
+  // Nav scroll
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 30);
+  });
 
-        // Formulario contacto
-        document.getElementById('contactForm')?.addEventListener('submit', (e) => { 
-            e.preventDefault(); 
-            alert('Mensaje enviado. Te contactaremos pronto.'); 
-            e.target.reset(); 
-        });
-    </script>
+  // Mobile menu
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('open');
+  }
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+  });
+
+  // FAQ
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  }
+
+  // Donation amounts
+  function setAmount(v) {
+    document.getElementById('customAmount').value = v;
+    document.querySelectorAll('.don-btn').forEach(b => b.classList.remove('active'));
+    event.currentTarget.classList.add('active');
+  }
+  function focusCustom() {
+    document.getElementById('customAmount').focus();
+    document.querySelectorAll('.don-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('otroBtn').classList.add('active');
+  }
+
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.asesor-card, .evento-card, .blog-card, .valor-card, .gal-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity .6s ease, transform .6s ease';
+    observer.observe(el);
+  });
+</script>
 </body>
 </html>
